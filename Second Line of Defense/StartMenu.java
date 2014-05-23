@@ -54,9 +54,14 @@ public class StartMenu extends JFrame {
 		btnNewButton_2.setBounds(201, 217, 117, 29);
 		contentPane.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Start");
+		final JButton btnNewButton_3 = new JButton("Start");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (arg0.getSource() == btnNewButton_3) {
+					dispose();
+					GameFrame g = new GameFrame();
+					g.setVisible(true);
+				}
 			}
 		});
 		btnNewButton_3.setBounds(201, 177, 117, 29);
