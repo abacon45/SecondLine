@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+package Enemy;
+
 class EnemySpawner {
   int enemiesSpawned;
   HashMap<Integer, IEnemy> enemies = new HashMap<Integer, IEnemy>();

@@ -1,3 +1,5 @@
+package Enemy;
+
 public class BasicBacteria implements IEnemy {
   private boolean alive;
   private int id;

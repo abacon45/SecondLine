@@ -1,3 +1,5 @@
+package Enemy;
+
 import junit.framework.TestCase;
 
 /**
