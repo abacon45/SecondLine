@@ -41,7 +41,7 @@ public class StartMenu extends JFrame {
 	 */
 	public StartMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 480, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -64,7 +64,7 @@ public class StartMenu extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(201, 299, 117, 29);
+		btnNewButton.setBounds(184, 700, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		final JButton btnNewButton_1 = new JButton("Options");
@@ -77,11 +77,11 @@ public class StartMenu extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(201, 258, 117, 29);
+		btnNewButton_1.setBounds(184, 659, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
 		final JButton btnNewButton_2 = new JButton("Load");
-		btnNewButton_2.setBounds(201, 217, 117, 29);
+		btnNewButton_2.setBounds(184, 618, 117, 29);
 		contentPane.add(btnNewButton_2);
 		
 		final JButton btnNewButton_3 = new JButton("Start");
@@ -94,11 +94,11 @@ public class StartMenu extends JFrame {
 				}
 			}
 		});
-		btnNewButton_3.setBounds(201, 177, 117, 29);
+		btnNewButton_3.setBounds(184, 577, 117, 29);
 		contentPane.add(btnNewButton_3);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 0, 500, 378);
+		lblNewLabel.setBounds(0, 0, 480, 800);
 		lblNewLabel.setIcon(new ImageIcon("Images/o-MULTIPLE-SCLEROSIS-TREATMENT-IMMUNE-SYSTEM-facebook.jpg"));
 		contentPane.add(lblNewLabel);
 	}
