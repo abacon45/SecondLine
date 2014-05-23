@@ -1,3 +1,5 @@
+package Enemy;
+
 class EnemySpawner {
   int enemiesSpawned;
   
