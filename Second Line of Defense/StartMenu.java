@@ -46,6 +46,7 @@ public class StartMenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
 		
 		JLabel lblSecondLineOf = new JLabel("Second Line of Defense");
 		lblSecondLineOf.setFont(new Font("Helvetica Neue", Font.PLAIN, 26));
@@ -97,8 +98,8 @@ public class StartMenu extends JFrame {
 		contentPane.add(btnNewButton_3);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 0, 500, 372);
-		lblNewLabel.setIcon(new ImageIcon("/Users/matthewkakavas/git/SecondLine/Second Line of Defense/o-MULTIPLE-SCLEROSIS-TREATMENT-IMMUNE-SYSTEM-facebook.jpg"));
+		lblNewLabel.setBounds(0, 0, 500, 378);
+		lblNewLabel.setIcon(new ImageIcon("Images/o-MULTIPLE-SCLEROSIS-TREATMENT-IMMUNE-SYSTEM-facebook.jpg"));
 		contentPane.add(lblNewLabel);
 	}
 }
