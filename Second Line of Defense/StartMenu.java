@@ -1,13 +1,17 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JLabel;
 
 
 public class StartMenu extends JFrame {
@@ -72,5 +76,10 @@ public class StartMenu extends JFrame {
 		txtSecondLineOf.setBounds(176, 62, 161, 28);
 		contentPane.add(txtSecondLineOf);
 		txtSecondLineOf.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(0, 0, 500, 372);
+		lblNewLabel.setIcon(new ImageIcon("/Users/matthewkakavas/git/SecondLine/Second Line of Defense/o-MULTIPLE-SCLEROSIS-TREATMENT-IMMUNE-SYSTEM-facebook.jpg"));
+		contentPane.add(lblNewLabel);
 	}
 }
