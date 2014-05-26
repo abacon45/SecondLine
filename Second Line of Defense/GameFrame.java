@@ -26,39 +26,46 @@ public class GameFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setResizable(false);		
 		JLabel lblNewLabel = new JLabel("");
 		ImageIcon map = new ImageIcon("Images/GameMap.png");
 		Image i = map.getImage().getScaledInstance(480, 778, Image.SCALE_SMOOTH);
 		map.setImage(i);
 		
-		JButton btnNewButton = new JButton("<>");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton.setBounds(90, 30, 40, 40);
-		contentPane.add(btnNewButton);
+		ImageIcon towerImage = new ImageIcon("Images/Tower.jpg");
+		Image image = towerImage.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		towerImage.setImage(image);
+
+		JButton towerBtn1 = new JButton("");
+		towerBtn1.setIcon(towerImage); 
+		towerBtn1.setBounds(254, 115, 40, 40);
+		contentPane.add(towerBtn1);
 		
-		JButton button = new JButton("<>");
-		button.setBounds(254, 115, 40, 40);
-		contentPane.add(button);
+		JButton towerBtn2 = new JButton("");
+		towerBtn2.setIcon(towerImage);
+		towerBtn2.setBounds(225, 256, 40, 40);
+		contentPane.add(towerBtn2);
 		
-		JButton button_1 = new JButton("<>");
-		button_1.setBounds(225, 256, 40, 40);
-		contentPane.add(button_1);
+		JButton towerBtn3 = new JButton("");
+		towerBtn3.setIcon(towerImage);
+		towerBtn3.setBounds(90, 555, 40, 40);
+		contentPane.add(towerBtn3);
 		
-		JButton button_2 = new JButton("<>");
-		button_2.setBounds(90, 555, 40, 40);
-		contentPane.add(button_2);
+		JButton towerBtn4 = new JButton("");
+		towerBtn4.setIcon(towerImage);
+		towerBtn4.setBounds(306, 555, 40, 40);
+		contentPane.add(towerBtn4);
 		
-		JButton button_3 = new JButton("<>");
-		button_3.setBounds(306, 555, 40, 40);
-		contentPane.add(button_3);
-		
-		JButton button_4 = new JButton("<>");
-		button_4.setBounds(0, 229, 40, 40);
-		contentPane.add(button_4);
+		JButton towerBtn5 = new JButton("");
+		towerBtn5.setIcon(towerImage);
+		towerBtn5.setBounds(0, 229, 40, 40);
+		contentPane.add(towerBtn5);
+
+		JButton towerBtn6 = new JButton("");
+		towerBtn6.setIcon(towerImage);
+		towerBtn6.setBounds(90, 30, 40, 40);
+		contentPane.add(towerBtn6);
+
 		lblNewLabel.setIcon(map);
 		lblNewLabel.setBounds(0, 0, 480, 778);
 		contentPane.add(lblNewLabel);
