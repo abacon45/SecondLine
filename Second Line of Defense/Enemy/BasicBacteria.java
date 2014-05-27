@@ -3,6 +3,9 @@ package Enemy;
 public class BasicBacteria implements IEnemy {
   private boolean alive;
   private int id;
+  private int xLocation;
+  private int yLocation;
+  
   public BasicBacteria(int newID) {
     alive = true;
     id = newID;
@@ -19,5 +22,21 @@ public class BasicBacteria implements IEnemy {
       return this.id == ((BasicBacteria) object).id;
     }
     return false;
+  }
+    
+  public void setLocation(int xCoordinate, int yCoordinate)
+  {
+   xLocation = xCoordinate;
+   yLocation = yCoordinate;
+  }
+  
+  public int getLocationX()
+  {
+   return xLocation;
+  }
+  
+  public int getLocationY()
+  {
+   return yLocation;
   }
 }

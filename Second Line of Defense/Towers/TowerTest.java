@@ -1,4 +1,6 @@
 package Towers;
+import Enemy.BasicBacteria;
+import Enemy.IEnemy;
 import junit.framework.TestCase;
 
 public class TowerTest extends TestCase {
@@ -24,11 +26,8 @@ public class TowerTest extends TestCase {
 		aTower.setType("slow");
 		assertEquals("slow", aTower.getType());
 	}
-	public void testEnemyInRange(){
-		IEnemy enemy;
-		System.out.println("Need enemy class");
-		//need enemy class
-		//assertTrue(aTower.inRange(enemy)); 
+	public void testEnemyInRange(){ //To do
+
 	}
 	
 
