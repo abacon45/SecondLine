@@ -1,7 +1,10 @@
 package Enemy;
+
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
+
+import java.util.HashMap;
 
 class EnemySpawner {
   int enemiesSpawned;
