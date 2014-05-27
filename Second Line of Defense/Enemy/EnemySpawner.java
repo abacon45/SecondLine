@@ -1,6 +1,7 @@
+package Enemy;
+
 import java.util.HashMap;
 
-package Enemy;
 
 class EnemySpawner {
   int enemiesSpawned;
