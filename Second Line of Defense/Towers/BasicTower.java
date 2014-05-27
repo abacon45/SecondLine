@@ -1,5 +1,7 @@
 package Towers;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class BasicTower {
@@ -8,6 +10,8 @@ public class BasicTower {
 	
 	public BasicTower() {
 		towerPicture = new ImageIcon("Images/Tower.jpg");
+		Image tImage = towerPicture.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		towerPicture.setImage(tImage);
 	}
 	
 	public ImageIcon getIcon() {
