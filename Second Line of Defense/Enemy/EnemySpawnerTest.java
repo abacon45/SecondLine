@@ -1,5 +1,5 @@
 package Enemy;
-
+import java.util.HashMap;
 import junit.framework.TestCase;
 
 /**
@@ -8,7 +8,7 @@ import junit.framework.TestCase;
  * the test with JUnit.
  */
 public class EnemySpawnerTest extends TestCase {
-  final int MAX_ENEMIES = 99;
+  final int MAX_ENEMIES = 5;
   /**
    * A test method.
    * (Replace "X" with a name describing the test.  You may write as
@@ -67,7 +67,8 @@ public class EnemySpawnerTest extends TestCase {
     assertNull (spawner.getEnemy(enemy1.ID()));
   }
   
-/*  public void testEnemyInfoReadFromFile() {
+  public void testEnemyInfoReadFromFile() {
+    
     EnemySpawner spawner = new EnemySpawner();
     HashMap<Integer, IEnemy> temp = new HashMap<Integer, IEnemy>();
     for (int i=0; i < MAX_ENEMIES; i++){
@@ -76,5 +77,5 @@ public class EnemySpawnerTest extends TestCase {
       temp.put(i, enemy);
     }
     assertEquals(temp, spawner.waveCreation());
-  } */
+  }
 }

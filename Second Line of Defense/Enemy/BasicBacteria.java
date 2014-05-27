@@ -13,4 +13,11 @@ public class BasicBacteria implements IEnemy {
   public int ID(){
     return id;
   }
+  
+  public boolean equals(Object object) {
+    if (object instanceof BasicBacteria) {
+      return this.id == ((BasicBacteria) object).id;
+    }
+    return false;
+  }
 }
