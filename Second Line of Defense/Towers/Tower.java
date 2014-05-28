@@ -1,6 +1,10 @@
 package Towers;
 
+
 import java.awt.Image;
+
+import Enemy.IEnemy;
+import java.lang.Math;
 
 public class Tower{
 	
@@ -16,6 +20,7 @@ public class Tower{
 	public Tower(int xLoc, int yLoc){
 		xCoordinate = xLoc;
 		yCoordinate = yLoc;
+		range = 20;
 	}
 	
 	//Methods
@@ -33,5 +38,17 @@ public class Tower{
 	public String getType()
 	{
 		return type; 
+	}
+	public boolean inRange(IEnemy enemy){
+		double x, y;
+		boolean isInRange = false;
+		x = (double) enemy.getLocationX();
+		y = (double) enemy.getLocationY();
+		if (this.range >= (Math.abs((double) this.xCoordinate - x))){
+				if (this.range >= (Math.abs((double) this.yCoordinate - y))){
+					isInRange = true;
+				}					
+		}
+		return isInRange;
 	}
 }
