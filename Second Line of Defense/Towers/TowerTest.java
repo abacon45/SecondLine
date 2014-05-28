@@ -26,6 +26,7 @@ public class TowerTest extends TestCase {
 		aTower.setType("slow");
 		assertEquals("slow", aTower.getType());
 	}
+	
 	public void testEnemyInRange(){ //To do
 
 	}

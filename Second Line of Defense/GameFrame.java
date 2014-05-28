@@ -17,11 +17,11 @@ import java.awt.event.ActionEvent;
 
 public class GameFrame extends JFrame {
 	
-	int activeLocation;
 	JButton[] TowerLocations = new JButton[6];
 	JButton[] MenuButtons = new JButton[4];
 
 	private JPanel contentPane;
+	private JPanel panel;
 
 	/**
 	 * Create the frame.
@@ -44,7 +44,7 @@ public class GameFrame extends JFrame {
 		Image image = locationImage.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		locationImage.setImage(image);
 		
-		final MenuPanel panel = new MenuPanel();
+		panel = new JPanel();
 		panel.setBounds(6, 650, 474, 100);
 		contentPane.add(panel);
 		panel.setVisible(false);
@@ -54,9 +54,7 @@ public class GameFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnNewButton) {
-					BasicTower b = panel.selectedTower(0);
-					setTowerForLocation(b);
-					panel.setVisible(false);
+					GameEngine.towerSelected(0);
 				}
 			}
 		});
@@ -68,9 +66,7 @@ public class GameFrame extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == button) {
-					BasicTower b = panel.selectedTower(1);
-					setTowerForLocation(b);
-					panel.setVisible(false);
+					GameEngine.towerSelected(0);
 				}
 			}
 		});
@@ -81,9 +77,7 @@ public class GameFrame extends JFrame {
 		final JButton button_1 = new JButton("New button");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				BasicTower b = panel.selectedTower(2);
-				setTowerForLocation(b);
-				panel.setVisible(false);
+				GameEngine.towerSelected(0);
 			}
 		});
 		button_1.setBounds(194, 6, 90, 89);
@@ -93,7 +87,7 @@ public class GameFrame extends JFrame {
 		final JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(false);
+				GameEngine.cancelSelected();
 			}
 		});
 		cancelButton.setBounds(378, 6, 90, 89);
@@ -103,8 +97,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn1 = new JButton("");
 		towerBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 0;
+				GameEngine.locationSelected(0);
 			}
 		});
 		towerBtn1.setIcon(locationImage); 
@@ -115,8 +108,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn2 = new JButton("");
 		towerBtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 1;
+				GameEngine.locationSelected(1);
 			}
 		});
 		towerBtn2.setIcon(locationImage);
@@ -127,8 +119,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn3 = new JButton("");
 		towerBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 2;
+				GameEngine.locationSelected(2);
 			}
 		});
 		towerBtn3.setIcon(locationImage);
@@ -139,8 +130,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn4 = new JButton("");
 		towerBtn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 3;
+				GameEngine.locationSelected(3);
 			}
 		});
 		towerBtn4.setIcon(locationImage);
@@ -151,8 +141,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn5 = new JButton("");
 		towerBtn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 4;
+				GameEngine.locationSelected(4);
 			}
 		});
 		towerBtn5.setIcon(locationImage);
@@ -163,8 +152,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn6 = new JButton("");
 		towerBtn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				panel.setVisible(true);
-				activeLocation = 5;
+				GameEngine.locationSelected(5);
 			}
 		});
 		towerBtn6.setIcon(locationImage);
@@ -177,7 +165,12 @@ public class GameFrame extends JFrame {
 		contentPane.add(lblNewLabel);
 	}
 	
-	private void setTowerForLocation(BasicTower b) {
+	public void setPanelVisible(boolean visible) {
+		panel.setVisible(visible);
+	}
+	
+	
+	public void setTowerForLocation(BasicTower b, int activeLocation) {
 		TowerLocations[activeLocation].setIcon(b.getIcon());
 	}
 }
