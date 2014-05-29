@@ -1,3 +1,4 @@
+package Map;
 public class EntryPoint {
   int x, y;
   public EntryPoint(int x, int y) {this.x = x; this.y = y;}

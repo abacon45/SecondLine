@@ -1,3 +1,4 @@
+package Map;
 import junit.framework.TestCase;
 import java.util.ArrayList;
 import Units.Enemy.*;

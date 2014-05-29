@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-import Towers.BasicTower;
+import Units.Towers.BasicTower;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

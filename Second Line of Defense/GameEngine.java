@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
-import Towers.BasicTower;
+import Units.Towers.BasicTower;
+import Units.Towers.BasicTowerTest;
 
 
 public class GameEngine {
@@ -52,7 +53,7 @@ public class GameEngine {
 	}
 	
 	public static void towerSelected(int tower) {
-		BasicTower b = new BasicTower();
+		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
 		gFrame.setTowerForLocation(b, activeLocation);
 		gFrame.setPanelVisible(false);
 	}
