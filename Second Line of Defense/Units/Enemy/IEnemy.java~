@@ -1,0 +1,6 @@
+package Enemy;
+import Units.IUnit;
+
+public interface IEnemy extends IUnit {
+  public boolean isAlive();
+}
