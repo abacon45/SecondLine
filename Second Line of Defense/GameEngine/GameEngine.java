@@ -1,6 +1,7 @@
 package GameEngine;
 import java.awt.EventQueue;
 
+import Map.Map;
 import Units.Towers.*;
 import Units.Enemy.*;
 
@@ -13,6 +14,7 @@ public class GameEngine {
 	static EncyclopediaFrame eFrame;
 	static EnemySpawner eSpawner;
 	static int activeLocation;
+	static Map m = new Map(40,60);
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -71,22 +73,36 @@ public class GameEngine {
 	public static void startWave() {
 		eSpawner = new EnemySpawner();
 		eSpawner.waveCreation();
+		long turnStart = System.nanoTime();
+		long turnEnd;
+		long turnDelta;
+		
 		while (eSpawner.enemiesLeft() > 0) {
+			turnStart = System.nanoTime();
 			eSpawner.spawn();
 			eSpawner.moveEnemies();
+			do{
+				turnEnd = System.nanoTime();
+				turnDelta = turnEnd - turnStart;
+			} while (turnDelta < 50000000);
+			turnEnd = 0;
+			
 		}
+		
 		System.out.println("game over");
 	}
 	
 	public static void drawEnemy(int x, int y){
 		gFrame.drawEnemy(x, y);
 	}
-	public static void moveEnemy(int x, int y, int enemy){
-		gFrame.moveEnemy(x, y, enemy);
+	public static void moveEnemy(int x, int y, IEnemy enemy){
+		m.placeUnit(x, y, enemy);
+		gFrame.moveEnemy(x, y, enemy.ID());
 	}
 	
 	public static void enemyDied(int id) {
 		eSpawner.enemyDeath(eSpawner.getEnemy(id));
 	}
+	
 	
 }

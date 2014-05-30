@@ -32,13 +32,10 @@ public class EnemySpawner {
   }
   
   public void moveEnemies() {
-	  int numberMoved = 0;
 	  for (Integer i : enemies.keySet()) {
 		  IEnemy enemy = enemies.get(i);
-		  enemy.setLocation(enemy.getLocationX(), enemy.getLocationY() + 1);
-		  GameEngine.moveEnemy(enemy.getLocationX(), enemy.getLocationY(), numberMoved);
-		  numberMoved++;
-		  if(numberMoved < enemiesSpawned()){
+		  GameEngine.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
+		  if(enemy.ID() < enemiesSpawned()){
 			  break;
 		  }
 	  } 
@@ -53,9 +50,8 @@ public class EnemySpawner {
   
   public void spawnEnemy(IEnemy enemy) {
     enemiesSpawned ++;
-    enemy.setLocation(150, 0);
+    enemy.setLocation(20, 0);
     GameEngine.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
-
   }
   
   public void enemyDeath(IEnemy enemy) {

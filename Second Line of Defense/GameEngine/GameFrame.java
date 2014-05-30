@@ -191,7 +191,7 @@ public class GameFrame extends JFrame {
 	
 	public void drawEnemy(int x, int y){
 		JLabel enemy = new JLabel();
-		enemy.setBounds(x, y, 20, 20);
+		enemy.setBounds(x * 20, y * 20, 20, 20);
 		enemy.setVisible(true);
 		enemy.setIcon(locationImage);
 		enemies[0] = enemy;
@@ -202,10 +202,11 @@ public class GameFrame extends JFrame {
 	}
 	public void moveEnemy(int x, int y, int enemy){
 		JLabel enemyLabel = enemies[enemy];
-		enemyLabel.setBounds(x, y, 20, 20);
+		enemyLabel.setBounds(x * 10, y * 12, 20, 20);
 		enemyLabel.setVisible(true);
 		contentPane.add(enemyLabel);
 		contentPane.validate();
 		contentPane.repaint();
+		contentPane.paintImmediately(contentPane.getBounds());
 	}
 }

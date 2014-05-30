@@ -26,11 +26,11 @@ public class BasicBacteria implements IEnemy {
     return false;
   }
     
-  public void setLocation(int xCoordinate, int yCoordinate)
+  public void setLocation(int gridX, int gridY)
   {
-   xLocation = xCoordinate;
-   yLocation = yCoordinate;
-   if (yLocation > 650) {
+   xLocation = gridX;
+   yLocation = gridY;
+   if (yLocation >= 55) {
 	   died();
    }
   }
