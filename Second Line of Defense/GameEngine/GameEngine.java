@@ -1,8 +1,8 @@
 package GameEngine;
 import java.awt.EventQueue;
 
-import Towers.BasicTower;
-import Enemy.*;
+import Units.Towers.*;
+import Units.Enemy.*;
 
 
 public class GameEngine {

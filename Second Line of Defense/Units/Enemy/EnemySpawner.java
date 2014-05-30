@@ -1,4 +1,4 @@
-package Enemy;
+package Units.Enemy;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import Units.Enemy.*;
 import GameEngine.GameEngine;
 
 public class EnemySpawner {
