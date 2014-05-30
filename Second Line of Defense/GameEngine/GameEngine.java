@@ -1,7 +1,8 @@
+package GameEngine;
 import java.awt.EventQueue;
 
-import Units.Towers.BasicTower;
-import Units.Towers.BasicTowerTest;
+import Units.Towers.*;
+import Units.Enemy.*;
 
 
 public class GameEngine {
@@ -10,6 +11,7 @@ public class GameEngine {
 	static GameFrame gFrame;
 	static OptionsFrame oFrame;
 	static EncyclopediaFrame eFrame;
+	static EnemySpawner eSpawner;
 	static int activeLocation;
 	
 	public static void main(String[] args) {
@@ -47,6 +49,10 @@ public class GameEngine {
 		}
 	}
 	
+	public static void startWaves() {
+		startWave();
+	}
+	
 	public static void locationSelected(int location) {
 		gFrame.setPanelVisible(true);
 		activeLocation = location;
@@ -61,4 +67,26 @@ public class GameEngine {
 	public static void cancelSelected() {
 		gFrame.setPanelVisible(false);
 	}
+	
+	public static void startWave() {
+		eSpawner = new EnemySpawner();
+		eSpawner.waveCreation();
+		while (eSpawner.enemiesLeft() > 0) {
+			eSpawner.spawn();
+			eSpawner.moveEnemies();
+		}
+		System.out.println("game over");
+	}
+	
+	public static void drawEnemy(int x, int y){
+		gFrame.drawEnemy(x, y);
+	}
+	public static void moveEnemy(int x, int y, int enemy){
+		gFrame.moveEnemy(x, y, enemy);
+	}
+	
+	public static void enemyDied(int id) {
+		eSpawner.enemyDeath(eSpawner.getEnemy(id));
+	}
+	
 }

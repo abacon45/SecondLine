@@ -1,3 +1,4 @@
+package GameEngine;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -13,15 +14,19 @@ import Units.Towers.BasicTower;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLayeredPane;
 
 
 public class GameFrame extends JFrame {
 	
 	JButton[] TowerLocations = new JButton[6];
 	JButton[] MenuButtons = new JButton[4];
+	JLabel[] enemies = new JLabel[10];
+	int enemyCount = 0;
 
-	private JPanel contentPane;
+	private JLayeredPane contentPane;
 	private JPanel panel;
+	private ImageIcon locationImage;
 
 	/**
 	 * Create the frame.
@@ -30,7 +35,7 @@ public class GameFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 800);
-		contentPane = new JPanel();
+		contentPane = new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -40,7 +45,7 @@ public class GameFrame extends JFrame {
 		Image i = map.getImage().getScaledInstance(480, 778, Image.SCALE_SMOOTH);
 		map.setImage(i);
 		
-		ImageIcon locationImage = new ImageIcon("Images/imgres.jpg");
+		locationImage = new ImageIcon("Images/imgres.jpg");
 		Image image = locationImage.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		locationImage.setImage(image);
 		
@@ -159,10 +164,20 @@ public class GameFrame extends JFrame {
 		towerBtn6.setBounds(90, 30, 40, 40);
 		contentPane.add(towerBtn6);
 		TowerLocations[5] = towerBtn6;
-
+		
+		JButton btnStartWave = new JButton("Start Wave");
+		btnStartWave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GameEngine.startWaves();
+			}
+		});
+		btnStartWave.setBounds(357, 6, 117, 29);
+		contentPane.add(btnStartWave);
+		
 		lblNewLabel.setIcon(map);
 		lblNewLabel.setBounds(0, 0, 480, 778);
 		contentPane.add(lblNewLabel);
+		
 	}
 	
 	public void setPanelVisible(boolean visible) {
@@ -172,5 +187,25 @@ public class GameFrame extends JFrame {
 	
 	public void setTowerForLocation(BasicTower b, int activeLocation) {
 		TowerLocations[activeLocation].setIcon(b.getIcon());
+	}
+	
+	public void drawEnemy(int x, int y){
+		JLabel enemy = new JLabel();
+		enemy.setBounds(x, y, 20, 20);
+		enemy.setVisible(true);
+		enemy.setIcon(locationImage);
+		enemies[0] = enemy;
+		enemyCount++;
+	    contentPane.add(enemy, new Integer(10));
+		contentPane.validate();
+		contentPane.repaint();
+	}
+	public void moveEnemy(int x, int y, int enemy){
+		JLabel enemyLabel = enemies[enemy];
+		enemyLabel.setBounds(x, y, 20, 20);
+		enemyLabel.setVisible(true);
+		contentPane.add(enemyLabel);
+		contentPane.validate();
+		contentPane.repaint();
 	}
 }
