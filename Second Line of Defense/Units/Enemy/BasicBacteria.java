@@ -7,6 +7,8 @@ public class BasicBacteria implements IEnemy {
   private int id;
   private int xLocation;
   private int yLocation;
+  private int baseDamage = 10;
+  private int health = 100;
   
   public BasicBacteria(int id) {
     alive = true;
@@ -48,4 +50,20 @@ public class BasicBacteria implements IEnemy {
   {
    return yLocation;
   }
+  
+  public int dealDamage(){
+    return baseDamage;
+  }
+  
+  public void takeDamage(int damage){
+    health -= damage;
+    if (health <= 0){
+      alive = false;
+    }
+  }
+  
+  public int checkHealth(){
+    return health;
+  }
+  
 }
