@@ -1,5 +1,7 @@
 package Enemy;
 
+import GameEngine.GameEngine;
+
 public class BasicBacteria implements IEnemy {
   private boolean alive;
   private int id;
@@ -10,9 +12,15 @@ public class BasicBacteria implements IEnemy {
     alive = true;
     id = newID;
   }
+  
+  private void died() {
+	  GameEngine.enemyDied(id);
+  }
+  
   public boolean isAlive(){
     return alive;
   }
+  
   public int ID(){
     return id;
   }
@@ -28,6 +36,9 @@ public class BasicBacteria implements IEnemy {
   {
    xLocation = xCoordinate;
    yLocation = yCoordinate;
+   if (yLocation > 650) {
+	   died();
+   }
   }
   
   public int getLocationX()
