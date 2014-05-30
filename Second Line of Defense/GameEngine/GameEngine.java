@@ -1,8 +1,13 @@
 package GameEngine;
 import java.awt.EventQueue;
 
+<<<<<<< HEAD:Second Line of Defense/GameEngine/GameEngine.java
 import Units.Towers.*;
 import Units.Enemy.*;
+=======
+import Units.Towers.BasicTower;
+import Units.Towers.BasicTowerTest;
+>>>>>>> 75ba4bc7437689c6fd7b31d6bbc25004065a50df:Second Line of Defense/GameEngine.java
 
 
 public class GameEngine {
@@ -59,7 +64,7 @@ public class GameEngine {
 	}
 	
 	public static void towerSelected(int tower) {
-		BasicTower b = new BasicTower();
+		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
 		gFrame.setTowerForLocation(b, activeLocation);
 		gFrame.setPanelVisible(false);
 	}
