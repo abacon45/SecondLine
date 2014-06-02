@@ -36,4 +36,10 @@ public class Map {
     grid[w][h] = unit;
     unit.setLocation(w, h);
   }
+  
+  public void removeUnit(int w, int h) {
+	grid[w][h] = null;
+  }
+  
+  
 }

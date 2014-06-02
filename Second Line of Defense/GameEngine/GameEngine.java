@@ -84,7 +84,7 @@ public class GameEngine {
 			do{
 				turnEnd = System.nanoTime();
 				turnDelta = turnEnd - turnStart;
-			} while (turnDelta < 50000000);
+			} while (turnDelta < 100000000);
 			turnEnd = 0;
 			
 		}
@@ -96,6 +96,7 @@ public class GameEngine {
 		gFrame.drawEnemy(x, y);
 	}
 	public static void moveEnemy(int x, int y, IEnemy enemy){
+		m.removeUnit(enemy.getLocationX(), enemy.getLocationY());
 		m.placeUnit(x, y, enemy);
 		gFrame.moveEnemy(x, y, enemy.ID());
 	}
