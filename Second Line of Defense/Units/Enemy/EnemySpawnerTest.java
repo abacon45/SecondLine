@@ -23,17 +23,17 @@ public class EnemySpawnerTest extends TestCase {
   public void testMultipleEnemiesSpawned() {
     EnemySpawner spawner = new EnemySpawner();
     IEnemy enemy = new BasicBacteria(0);
-    spawner.spawnEnemy(enemy);
-    spawner.spawnEnemy(enemy);
-    spawner.spawnEnemy(enemy);
+    spawner.spawnEnemyOnMap(enemy);
+    spawner.spawnEnemyOnMap(enemy);
+    spawner.spawnEnemyOnMap(enemy);
     assertEquals (3, spawner.enemiesSpawned());
   }
   
   public void testEnemyKilled() {
     EnemySpawner spawner = new EnemySpawner();
     IEnemy enemy = new BasicBacteria(0);
-    spawner.spawnEnemy(enemy);
-    spawner.spawnEnemy(enemy);
+    spawner.spawnEnemyOnMap(enemy);
+    spawner.spawnEnemyOnMap(enemy);
     spawner.enemyDeath(enemy);
     assertEquals (1, spawner.enemiesSpawned());
   }
@@ -41,7 +41,7 @@ public class EnemySpawnerTest extends TestCase {
   public void testEnemyIsInCollection(){
     EnemySpawner spawner = new EnemySpawner();
     IEnemy enemy = new BasicBacteria(0);
-    spawner.spawnEnemy(enemy);
+    spawner.spawnEnemyOnMap(enemy);
     assertEquals(true, spawner.getEnemy(enemy.ID()).isAlive());
   }
   
@@ -49,8 +49,8 @@ public class EnemySpawnerTest extends TestCase {
     EnemySpawner spawner = new EnemySpawner();
     IEnemy enemy0 = new BasicBacteria(0);
     IEnemy enemy1 = new BasicBacteria(1);
-    spawner.spawnEnemy(enemy0);
-    spawner.spawnEnemy(enemy1);
+    spawner.spawnEnemyOnMap(enemy0);
+    spawner.spawnEnemyOnMap(enemy1);
     
     assertEquals(true, spawner.getEnemy(enemy0.ID()).isAlive());
     assertEquals(true, spawner.getEnemy(enemy1.ID()).isAlive());  
@@ -60,8 +60,8 @@ public class EnemySpawnerTest extends TestCase {
     EnemySpawner spawner = new EnemySpawner();
     IEnemy enemy0 = new BasicBacteria(0);
     IEnemy enemy1 = new BasicBacteria(1);
-    spawner.spawnEnemy(enemy0);
-    spawner.spawnEnemy(enemy1);
+    spawner.spawnEnemyOnMap(enemy0);
+    spawner.spawnEnemyOnMap(enemy1);
     spawner.enemyDeath(enemy1);
     
     assertNull (spawner.getEnemy(enemy1.ID()));
@@ -73,7 +73,7 @@ public class EnemySpawnerTest extends TestCase {
     HashMap<Integer, IEnemy> temp = new HashMap<Integer, IEnemy>();
     for (int i=0; i < MAX_ENEMIES; i++){
       IEnemy enemy = new BasicBacteria(i);
-      spawner.spawnEnemy(enemy);
+      spawner.spawnEnemyOnMap(enemy);
       temp.put(i, enemy);
     }
     assertEquals(temp, spawner.waveCreation());
