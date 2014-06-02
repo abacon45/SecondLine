@@ -194,7 +194,7 @@ public class GameFrame extends JFrame {
 		enemy.setBounds(x * 20, y * 20, 20, 20);
 		enemy.setVisible(true);
 		enemy.setIcon(locationImage);
-		enemies[0] = enemy;
+		enemies[enemyCount] = enemy;
 		enemyCount++;
 	    contentPane.add(enemy, new Integer(10));
 		contentPane.validate();
@@ -208,5 +208,10 @@ public class GameFrame extends JFrame {
 		contentPane.validate();
 		contentPane.repaint();
 		contentPane.paintImmediately(contentPane.getBounds());
+	}
+	
+	public void removeLabel(int enemyID) {
+		JLabel enemyLabel = enemies[enemyID];
+		contentPane.remove(enemyLabel);
 	}
 }

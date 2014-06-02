@@ -34,6 +34,7 @@ public class BasicBacteria implements IEnemy {
    yLocation = gridY;
    if (yLocation >= 55) {
 	   died();
+	   
    }
   }
   

@@ -17,22 +17,35 @@ public class EnemySpawner {
   int enemiesSpawned;
   int enemiesLeft = 0;
   int enemiesTotal = 0;
+  boolean completedSpawn = false;;
   Integer i;
   HashMap<Integer, IEnemy> enemies = new HashMap<Integer, IEnemy>();
   
   public EnemySpawner() {
     enemiesSpawned = 0;
   } 
- 
+
   public void moveEnemies() {
-   for (Integer i : enemies.keySet()) {
-    IEnemy enemy = enemies.get(i);
-    GameEngine.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
-    if(enemy.ID() < enemiesSpawned()){
-     break;
-    }
-   } 
+    for (Integer i : enemies.keySet()) {
+      IEnemy enemy = enemies.get(i);
+      System.out.println(i);
+      if (enemy != null) {
+        GameEngine.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
+        if(enemy.ID() < enemiesSpawned()){
+          break;
+        }
+      }
+    } 
   }
+    
+/*  public void spawn() {
+    if (enemiesSpawned < enemiesTotal && !completedSpawn) {
+      Object[] i = enemies.keySet().toArray();
+      spawnEnemy(enemies.get(i[enemiesSpawned]));
+    } else {
+      completedSpawn = true;
+    }
+  } */
   
   public int enemiesSpawned() {
     return enemiesSpawned;
@@ -49,7 +62,8 @@ public class EnemySpawner {
     
   public void spawnEnemyOnMap(IEnemy enemy) {
     enemiesSpawned ++;
-//  enemy.setLocation(20, 0);
+    int startLocation = 20;
+    enemy.setLocation(startLocation + 5 * enemy.ID(), 0);
     enemies.put(enemy.ID(), enemy);
 //    GameEngine.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
   }
@@ -66,7 +80,6 @@ public class EnemySpawner {
   public void enemyDeath(IEnemy enemy) {
     enemies.remove(enemy.ID());
     enemiesSpawned --;
-    enemiesLeft--;
   }
   
   public IEnemy getEnemy(int id){

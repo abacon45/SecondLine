@@ -15,6 +15,7 @@ public class GameEngine {
 	static EnemySpawner eSpawner;
 	static int activeLocation;
 	static Map m = new Map(40,60);
+	static int heartHealth;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -71,13 +72,14 @@ public class GameEngine {
 	}
 	
 	public static void startWave() {
+		heartHealth = 1;
 		eSpawner = new EnemySpawner();
 		eSpawner.waveCreation();
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;
 		
-		while (eSpawner.enemiesLeft() > 0) {
+		while (eSpawner.enemiesLeft() > 0 || heartHealth == 0) {
 			turnStart = System.nanoTime();
 			eSpawner.spawn();
 			eSpawner.moveEnemies();
@@ -88,13 +90,15 @@ public class GameEngine {
 			turnEnd = 0;
 			
 		}
-		
-		System.out.println("game over");
+		if (heartHealth == 0) {
+			System.out.println("game over");
+		}
 	}
 	
 	public static void drawEnemy(int x, int y){
 		gFrame.drawEnemy(x, y);
 	}
+	
 	public static void moveEnemy(int x, int y, IEnemy enemy){
 		m.removeUnit(enemy.getLocationX(), enemy.getLocationY());
 		m.placeUnit(x, y, enemy);
@@ -103,7 +107,10 @@ public class GameEngine {
 	
 	public static void enemyDied(int id) {
 		eSpawner.enemyDeath(eSpawner.getEnemy(id));
+		gFrame.removeLabel(id);
 	}
 	
-	
+	public static void reachedHeart() {
+		heartHealth--;
+	}
 }
