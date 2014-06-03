@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import Units.Towers.BasicTower;
+import Units.Towers.CytotoxicTCell;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
+
 import javax.swing.JLayeredPane;
 
 
@@ -222,7 +225,7 @@ public class GameFrame extends JFrame {
 		
 	}
 	
-	public void addCytotoxicTCell(){
+	public void CytotoxicTCellCell(LinkedList<CytotoxicTCell> tCells){
 		int count = 0;
 		for(JLabel i: defense){
 			i = new JLabel();
@@ -231,7 +234,7 @@ public class GameFrame extends JFrame {
 			temp.setImage(image);
 		    i.setIcon(temp);
 		    i.setVisible(true);
-		    i.setBounds((20 + 5 * count) * 10, 30 *12, 20, 20);
+		    i.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 20, 20);
 			contentPane.add(i, new Integer (10));
 			count++;
 			contentPane.validate();

@@ -1,5 +1,6 @@
 package GameEngine;
 import java.awt.EventQueue;
+import java.util.LinkedList;
 
 import Map.Map;
 import Units.Towers.*;
@@ -78,20 +79,19 @@ public class GameEngine {
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;
-		int counter = 0;
-		CytotoxicTCell[] defense = new CytotoxicTCell[3];
-		CytotoxicTCell i = new CytotoxicTCell(counter);
+		LinkedList<CytotoxicTCell> defense = new LinkedList<CytotoxicTCell>();
+		CytotoxicTCell i = new CytotoxicTCell(0);
 		i.setLocation(20 , 30);
-		defense[0] = i;
+		defense.add(i);
 
-		CytotoxicTCell i1 = new CytotoxicTCell(counter);
+		CytotoxicTCell i1 = new CytotoxicTCell(1);
 		i1.setLocation(20 + 5, 30);
-		defense[1] = i1;
+		defense.add(i1);
 
-		CytotoxicTCell i2 = new CytotoxicTCell(counter);
+		CytotoxicTCell i2 = new CytotoxicTCell(2);
 		i2.setLocation(20 + 10, 30);
-		defense[2] = i2;
-		gFrame.addCytotoxicTCell();
+		defense.add(i2);
+		gFrame.CytotoxicTCellCell(defense);
 		
 		while (eSpawner.enemiesLeft() > 0 && heartHealth > 0) {
 			turnStart = System.nanoTime();

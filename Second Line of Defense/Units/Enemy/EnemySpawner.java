@@ -103,7 +103,7 @@ public class EnemySpawner {
     return enemies;
   }
   
-  public void checkCombat(CytotoxicTCell[] defense){
+  public void checkCombat(LinkedList<CytotoxicTCell> defense){
 	  for (CytotoxicTCell cell: defense){
 		  for (int i = 0; i < aliveEnemies.size(); i++) {
 			  IEnemy enemy = aliveEnemies.get(i);
