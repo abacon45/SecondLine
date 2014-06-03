@@ -62,8 +62,4 @@ public class CytotoxicTCell implements IUnit {
   public int checkHealth(){
     return health;
   }
-  
-  public boolean isAlive() {
-    return health > 0;
-  }
 }
