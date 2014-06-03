@@ -63,7 +63,7 @@ public class CytotoxicTCellTest extends TestCase {
     bad1.takeDamage(tCell.dealDamage());
     assertEquals(bad1.checkHealth(), 85);
   }
-  public void testIsDead(){
+  public void testEnemyKilled(){
     CytotoxicTCell tCell = new CytotoxicTCell(0);
     tCell.setLocation(1, 2);
     BasicBacteria bad1 = new BasicBacteria(1);
@@ -73,4 +73,13 @@ public class CytotoxicTCellTest extends TestCase {
     }
     assertFalse(bad1.isAlive());
   }
+  
+  public void testCellAlive() {
+    CytotoxicTCell tCell = new CytotoxicTCell(100);
+    tCell.takeDamage(99);
+    assertTrue(tCell.isAlive());
+    tCell.takeDamage(1);
+    assertFalse(tCell.isAlive());
+  }
+  
 }

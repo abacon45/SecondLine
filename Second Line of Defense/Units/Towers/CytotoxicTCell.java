@@ -7,7 +7,7 @@ public class CytotoxicTCell implements IUnit {
   private int xLocation;
   private int yLocation;
   private int health = 100;
-  private int baseDamage = 15;
+  private static int baseDamage = 15;
   
   public CytotoxicTCell(int id) {
     this.id = id;
@@ -52,5 +52,9 @@ public class CytotoxicTCell implements IUnit {
   
   public int checkHealth(){
     return health;
+  }
+  
+  public boolean isAlive() {
+    return health > 0;
   }
 }
