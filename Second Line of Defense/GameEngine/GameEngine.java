@@ -78,11 +78,26 @@ public class GameEngine {
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;
+		int counter = 0;
+		CytotoxicTCell[] defense = new CytotoxicTCell[3];
+		CytotoxicTCell i = new CytotoxicTCell(counter);
+		i.setLocation(20 , 30);
+		defense[0] = i;
+
+		CytotoxicTCell i1 = new CytotoxicTCell(counter);
+		i1.setLocation(20 + 5, 30);
+		defense[1] = i1;
+
+		CytotoxicTCell i2 = new CytotoxicTCell(counter);
+		i2.setLocation(20 + 10, 30);
+		defense[2] = i2;
+		gFrame.addCytotoxicTCell();
 		
-		while (eSpawner.enemiesLeft() > 0 || heartHealth == 0) {
+		while (eSpawner.enemiesLeft() > 0 && heartHealth > 0) {
 			turnStart = System.nanoTime();
 			eSpawner.spawn();
 			eSpawner.moveEnemies();
+            eSpawner.checkCombat(defense);
 			do{
 				turnEnd = System.nanoTime();
 				turnDelta = turnEnd - turnStart;
@@ -93,6 +108,7 @@ public class GameEngine {
 		if (heartHealth == 0) {
 			System.out.println("game over");
 		}
+		eSpawner = null;
 	}
 	
 	public static void drawEnemy(int x, int y){
@@ -113,4 +129,19 @@ public class GameEngine {
 	public static void reachedHeart() {
 		heartHealth--;
 	}
+	public static void startCombat(IEnemy enemy, CytotoxicTCell cell){
+		long turnStart = System.nanoTime();
+		long turnEnd;
+		long turnDelta;
+		  while (enemy.isAlive() && cell.isAlive()){
+			  enemy.takeDamage(cell.dealDamage());
+			  cell.takeDamage(enemy.dealDamage());
+			  turnStart = System.nanoTime();
+			  do{
+					turnEnd = System.nanoTime();
+					turnDelta = turnEnd - turnStart;
+				} while (turnDelta < 100000000);
+			  turnEnd = 0;
+		  }
+	  }
 }

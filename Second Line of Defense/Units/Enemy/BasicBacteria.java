@@ -33,8 +33,7 @@ public class BasicBacteria implements IEnemy {
    xLocation = gridX;
    yLocation = gridY;
    if (yLocation >= 55) {
-	   died();
-	   
+	   died();  
    }
   }
   
@@ -60,6 +59,7 @@ public class BasicBacteria implements IEnemy {
     health -= damage;
     if (health <= 0){
       alive = false;
+      died();
     }
   }
   

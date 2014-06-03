@@ -22,6 +22,7 @@ public class GameFrame extends JFrame {
 	JButton[] TowerLocations = new JButton[6];
 	JButton[] MenuButtons = new JButton[4];
 	JLabel[] enemies = new JLabel[10];
+	JLabel[] defense = new JLabel[3];
 	int enemyCount = 0;
 
 	private JLayeredPane contentPane;
@@ -203,7 +204,6 @@ public class GameFrame extends JFrame {
 	public void moveEnemy(int x, int y, int enemy){
 		JLabel enemyLabel = enemies[enemy];
 		enemyLabel.setBounds(x * 10, y * 12, 20, 20);
-		enemyLabel.setVisible(true);
 		contentPane.add(enemyLabel);
 		contentPane.validate();
 		contentPane.repaint();
@@ -212,6 +212,32 @@ public class GameFrame extends JFrame {
 	
 	public void removeLabel(int enemyID) {
 		JLabel enemyLabel = enemies[enemyID];
+		enemyLabel.setVisible(false);
+		contentPane.validate();
+		contentPane.repaint();
+		contentPane.paintImmediately(contentPane.getBounds());
 		contentPane.remove(enemyLabel);
+		enemyCount--;
+		
+		
+	}
+	
+	public void addCytotoxicTCell(){
+		int count = 0;
+		for(JLabel i: defense){
+			i = new JLabel();
+			ImageIcon temp = new ImageIcon("Images/happy-white-blood-cell.jpg");
+			Image image = temp.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+			temp.setImage(image);
+		    i.setIcon(temp);
+		    i.setVisible(true);
+		    i.setBounds((20 + 5 * count) * 10, 30 *12, 20, 20);
+			contentPane.add(i, new Integer (10));
+			count++;
+			contentPane.validate();
+			contentPane.repaint();
+			contentPane.paintImmediately(contentPane.getBounds());
+		}
+
 	}
 }
