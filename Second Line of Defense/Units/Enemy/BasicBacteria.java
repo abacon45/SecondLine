@@ -33,8 +33,7 @@ public class BasicBacteria implements IEnemy {
    xLocation = gridX;
    yLocation = gridY;
    if (yLocation >= 55) {
-	   died();
-	   
+	   died();  
    }
   }
   
@@ -58,8 +57,10 @@ public class BasicBacteria implements IEnemy {
   
   public void takeDamage(int damage){
     health -= damage;
+    System.out.println("Bacteria: " + health);
     if (health <= 0){
       alive = false;
+      died();
     }
   }
   

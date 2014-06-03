@@ -8,13 +8,19 @@ public class CytotoxicTCell implements IUnit {
   private int yLocation;
   private int health = 100;
   private int baseDamage = 15;
+  private boolean alive;
   
   public CytotoxicTCell(int id) {
     this.id = id;
+    alive = true;
   }
   
   public int ID() {
     return id;
+  }
+  
+  public boolean isAlive(){
+	  return alive;
   }
   
   public boolean equals(Object object) {
@@ -48,9 +54,14 @@ public class CytotoxicTCell implements IUnit {
   
   public void takeDamage(int damage){
     health -= damage;
+    System.out.println("Cell: " + health);
+    if (this.health <= 0){
+    	alive = false;
+    }
   }
   
   public int checkHealth(){
     return health;
   }
+  
 }
