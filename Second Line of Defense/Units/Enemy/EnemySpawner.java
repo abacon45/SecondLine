@@ -27,16 +27,7 @@ public class EnemySpawner {
   public EnemySpawner() {
     enemiesSpawned = 0;
   } 
-  
-  public void spawn() {
-	if (enemiesSpawned < enemiesTotal && !completedSpawn) {
-		Object[] i = enemies.keySet().toArray();
-		spawnEnemy(enemies.get(i[enemiesSpawned]));
-	} else {
-		completedSpawn = true;
-	}
-  }
-  
+
   public void moveEnemies() {
 	  for (int i = 0; i < aliveEnemies.size(); i++) {
 		  IEnemy enemy = aliveEnemies.get(i);
@@ -44,17 +35,27 @@ public class EnemySpawner {
 		if(enemy.ID() == enemiesSpawned() - 1){
 			break;
 		}
-	  } 
+	  }
   }
+    
+  public void spawn() {
+    if (enemiesSpawned < enemiesTotal && !completedSpawn) {
+      Object[] i = enemies.keySet().toArray();
+      spawnEnemyOnMap(enemies.get(i[enemiesSpawned]));
+    } else {
+      completedSpawn = true;
+    }
+  } 
+  
   public int enemiesSpawned() {
     return enemiesSpawned;
   }
   
   public int enemiesLeft() {
-	return enemiesLeft;
+    return enemiesLeft;
   }
-  
-  public void spawnEnemy(IEnemy enemy) {
+    
+  public void spawnEnemyOnMap(IEnemy enemy) {
     enemiesSpawned ++;
     int startLocation = 20;
     enemy.setLocation(startLocation + 5 * enemy.ID(), 0);
@@ -62,17 +63,26 @@ public class EnemySpawner {
     aliveEnemies.add(enemy);
   }
   
+  private IEnemy createEnemyFromFile(String type, int id) {
+    IEnemy enemy;
+    if (type.equals("Bacteria")) {
+      enemy = new BasicBacteria(id);
+    }
+    else enemy = null;
+    return enemy;
+  }  
+  
   public void enemyDeath(IEnemy enemy) {
 	aliveEnemies.remove(enemy);
     enemies.remove(enemy.ID());
-    enemiesLeft--;
+    enemiesLeft --;
   }
   
   public IEnemy getEnemy(int id){
     return enemies.get(id);
   }
   
-  public boolean waveCreation() {
+  public HashMap<Integer, IEnemy> waveCreation() {
     File f = new File("Units/Enemy/enemies.txt");
     try {
       Scanner scanner =  new Scanner(f);
@@ -80,7 +90,7 @@ public class EnemySpawner {
         String enemyType = scanner.nextLine();
         int    enemyId   = (int) scanner.nextInt();
         scanner.nextLine();
-        IEnemy enemy     = enemyCreator(enemyType, enemyId);
+        IEnemy enemy     = createEnemyFromFile(enemyType, enemyId);
         enemies.put(enemy.ID(), enemy);
         enemiesTotal++;
       }
@@ -88,18 +98,9 @@ public class EnemySpawner {
       scanner.close();
     } catch(Exception e) {
       System.out.println(e);
-      return false;
+      return null;
     }
-    return true;
-  }
-  
-  private IEnemy enemyCreator(String type, int id) {
-    IEnemy enemy;
-    if (type.equals("Bacteria")) {
-      enemy = new BasicBacteria(id);
-    }
-    else enemy = null;
-    return enemy;
+    return enemies;
   }
   
   public void checkCombat(CytotoxicTCell[] defense){

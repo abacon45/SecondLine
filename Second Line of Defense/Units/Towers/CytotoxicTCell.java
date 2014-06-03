@@ -54,7 +54,6 @@ public class CytotoxicTCell implements IUnit {
   
   public void takeDamage(int damage){
     health -= damage;
-    System.out.println("Cell: " + health);
     if (this.health <= 0){
     	alive = false;
     }

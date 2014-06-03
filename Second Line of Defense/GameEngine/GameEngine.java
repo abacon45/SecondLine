@@ -93,7 +93,7 @@ public class GameEngine {
 		defense[2] = i2;
 		gFrame.addCytotoxicTCell();
 		
-		while (eSpawner.enemiesLeft() > 0 || heartHealth == 0) {
+		while (eSpawner.enemiesLeft() > 0 && heartHealth > 0) {
 			turnStart = System.nanoTime();
 			eSpawner.spawn();
 			eSpawner.moveEnemies();
