@@ -17,6 +17,7 @@ public class GameEngine {
 	static int activeLocation;
 	static Map m = new Map(40,60);
 	static int heartHealth;
+	private Player me;
 	
 	public static GameEngine g;
 	

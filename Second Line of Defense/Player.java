@@ -19,8 +19,17 @@ public class Player {
 	  return DNA;
   }
   
-  public void addDNA(int DNA)
-  {
+  public void addDNA(int DNA) {
 	  this.DNA += DNA;
+  }
+  
+  public boolean spendDNA(int DNA) {
+	
+	  if (DNA < this.DNA) {
+		  this.DNA -= DNA;
+		  return true;
+	  }
+	  
+	  return false;
   }
 }

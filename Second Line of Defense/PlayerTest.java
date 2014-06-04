@@ -30,4 +30,17 @@ public class PlayerTest extends TestCase {
 	  player1.addDNA(50);
 	  assertEquals(150, player1.getDNA());
   }
+  
+  public void testSpendAvailableDNA() {
+	  Player player1 = new Player();
+	  player1.spendDNA(50);
+	  assertEquals(50, player1.getDNA());
+  }
+  
+  public void testSpendNonAvailableDNA() {
+	  Player player1 = new Player();
+	  player1.spendDNA(150);
+	  assertEquals(100, player1.getDNA());
+  }
+  
 }

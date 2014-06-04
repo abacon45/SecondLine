@@ -9,10 +9,12 @@ public class BasicBacteria implements IEnemy {
   private int yLocation;
   private int baseDamage = 10;
   private int health = 100;
+  private boolean slowed;
   GameEngine g;
   
   public BasicBacteria(int id) {
     alive = true;
+    slowed = false;
     this.id = id;
     g = GameEngine.getInstance();
   }
@@ -21,6 +23,14 @@ public class BasicBacteria implements IEnemy {
   }
   public int ID(){
     return id;
+  }
+  
+  public boolean getSlowed() {
+	  return slowed;
+  }
+  
+  public void setSlowed(boolean boolState) {
+	  slowed = boolState;
   }
   
   public boolean equals(Object object) {
