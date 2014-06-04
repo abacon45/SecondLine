@@ -28,6 +28,7 @@ public class GameFrame extends JFrame {
 	LinkedList<JLabel> defense = new LinkedList<JLabel>();
 	int enemyCount = 0;
 	GameEngine g;
+	JLabel dnaLabel;
 
 	private JLayeredPane contentPane;
 	private JPanel panel;
@@ -177,6 +178,10 @@ public class GameFrame extends JFrame {
 				g.startWaves();
 			}
 		});
+		
+		dnaLabel = new JLabel("DNA: 100");
+		dnaLabel.setBounds(0, 0, 61, 16);
+		contentPane.add(dnaLabel);
 		btnStartWave.setBounds(357, 6, 117, 29);
 		contentPane.add(btnStartWave);
 		
@@ -184,6 +189,10 @@ public class GameFrame extends JFrame {
 		lblNewLabel.setBounds(0, 0, 480, 778);
 		contentPane.add(lblNewLabel);
 		
+	}
+	
+	public void updateDNA(int d) {
+		dnaLabel.setText("DNA: " + d);
 	}
 	
 	public void setPanelVisible(boolean visible) {
@@ -240,11 +249,11 @@ public class GameFrame extends JFrame {
 		for(int i = 0; i < tCells.size(); i++) {
 			JLabel dLabel = new JLabel();
 			ImageIcon temp = new ImageIcon("Images/happy-white-blood-cell.jpg");
-			Image image = temp.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+			Image image = temp.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 			temp.setImage(image);
 			dLabel.setIcon(temp);
 			dLabel.setVisible(true);
-			dLabel.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 20, 20);
+			dLabel.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 40, 40);
 			defense.add(dLabel);
 			contentPane.add(dLabel, new Integer (10));
 			count++;

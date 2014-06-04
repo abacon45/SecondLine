@@ -82,6 +82,7 @@ public class GameEngine {
 	public void towerSelected(int tower) {
 		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
 		if (me.spendDNA(50)) {
+			gFrame.updateDNA(me.getDNA());
 			if (gFrame != null) {
 				gFrame.setTowerForLocation(b, activeLocation);
 				gFrame.setPanelVisible(false);
@@ -156,6 +157,8 @@ public class GameEngine {
 	}
 	
 	public void enemyDied(int id) {
+		me.addDNA(50);
+		gFrame.updateDNA(me.getDNA());
 		if (eSpawner != null)
 			eSpawner.enemyDeath(eSpawner.getEnemy(id));
 		if (gFrame != null)
