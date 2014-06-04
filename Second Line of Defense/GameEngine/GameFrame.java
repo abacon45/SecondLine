@@ -25,7 +25,7 @@ public class GameFrame extends JFrame {
 	JButton[] TowerLocations = new JButton[6];
 	JButton[] MenuButtons = new JButton[4];
 	JLabel[] enemies = new JLabel[10];
-	JLabel[] defense = new JLabel[3];
+	LinkedList<JLabel> defense = new LinkedList<JLabel>();
 	int enemyCount = 0;
 
 	private JLayeredPane contentPane;
@@ -213,29 +213,38 @@ public class GameFrame extends JFrame {
 		contentPane.paintImmediately(contentPane.getBounds());
 	}
 	
-	public void removeLabel(int enemyID) {
+	public void removeEnemyLabel(int enemyID) {
 		JLabel enemyLabel = enemies[enemyID];
 		enemyLabel.setVisible(false);
 		contentPane.validate();
 		contentPane.repaint();
 		contentPane.paintImmediately(contentPane.getBounds());
 		contentPane.remove(enemyLabel);
-		enemyCount--;
-		
-		
+		enemyCount--;	
+	}
+	
+	public void removeCellLabel(int cellID) {
+		JLabel dLabel = defense.get(cellID);
+		dLabel.setVisible(false);
+		contentPane.validate();
+		contentPane.repaint();
+		contentPane.paintImmediately(contentPane.getBounds());
+		contentPane.remove(dLabel);
+		enemyCount--;	
 	}
 	
 	public void CytotoxicTCellCell(LinkedList<CytotoxicTCell> tCells){
 		int count = 0;
-		for(JLabel i: defense){
-			i = new JLabel();
+		for(int i = 0; i < tCells.size(); i++) {
+			JLabel dLabel = new JLabel();
 			ImageIcon temp = new ImageIcon("Images/happy-white-blood-cell.jpg");
-			Image image = temp.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+			Image image = temp.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
 			temp.setImage(image);
-		    i.setIcon(temp);
-		    i.setVisible(true);
-		    i.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 20, 20);
-			contentPane.add(i, new Integer (10));
+			dLabel.setIcon(temp);
+			dLabel.setVisible(true);
+			dLabel.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 20, 20);
+			defense.add(dLabel);
+			contentPane.add(dLabel, new Integer (10));
 			count++;
 			contentPane.validate();
 			contentPane.repaint();

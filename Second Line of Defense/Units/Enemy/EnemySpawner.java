@@ -57,8 +57,8 @@ public class EnemySpawner {
     
   public void spawnEnemyOnMap(IEnemy enemy) {
     enemiesSpawned ++;
-    int startLocation = 20;
-    enemy.setLocation(startLocation + 5 * enemy.ID(), 0);
+    int startLocation = 17;
+    enemy.setLocation(startLocation, 0);
     GameEngine.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
     aliveEnemies.add(enemy);
   }

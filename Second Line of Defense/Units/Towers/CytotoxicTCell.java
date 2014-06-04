@@ -1,4 +1,5 @@
 package Units.Towers;
+import GameEngine.GameEngine;
 import Units.IUnit;
 import Units.Enemy.*;
 
@@ -54,9 +55,15 @@ public class CytotoxicTCell implements IUnit {
   
   public void takeDamage(int damage){
     health -= damage;
+    System.out.println("Cell: " + health);
     if (this.health <= 0){
     	alive = false;
+    	died();
     }
+  }
+  
+  private void died() {
+	 GameEngine.cellDied(id);
   }
   
   public int checkHealth(){
