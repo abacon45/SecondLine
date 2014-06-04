@@ -8,7 +8,7 @@ import junit.framework.TestCase;
  * the test with JUnit.
  */
 public class EnemySpawnerTest extends TestCase {
-  final int MAX_ENEMIES = 5;
+  final int MAX_ENEMIES = 3;
   /**
    * A test method.
    * (Replace "X" with a name describing the test.  You may write as
@@ -38,22 +38,12 @@ public class EnemySpawnerTest extends TestCase {
     assertEquals (1, spawner.enemiesSpawned());
   }
   
-  public void testEnemyIsInCollection(){
-    EnemySpawner spawner = new EnemySpawner();
-    IEnemy enemy = new BasicBacteria(0);
-    spawner.spawnEnemyOnMap(enemy);
-    assertEquals(true, spawner.getEnemy(enemy.ID()).isAlive());
-  }
-  
   public void testMultipleEnemiesInCollection() {
     EnemySpawner spawner = new EnemySpawner();
-    IEnemy enemy0 = new BasicBacteria(0);
-    IEnemy enemy1 = new BasicBacteria(1);
-    spawner.spawnEnemyOnMap(enemy0);
-    spawner.spawnEnemyOnMap(enemy1);
+    spawner.waveCreation();
     
-    assertEquals(true, spawner.getEnemy(enemy0.ID()).isAlive());
-    assertEquals(true, spawner.getEnemy(enemy1.ID()).isAlive());  
+    assertEquals(true, spawner.getEnemy(0).isAlive());
+    assertEquals(true, spawner.getEnemy(1).isAlive());  
   }
   
   public void testDeadEnemiesDeletedFromCollection() {

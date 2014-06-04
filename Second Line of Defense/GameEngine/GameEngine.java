@@ -132,7 +132,8 @@ public class GameEngine {
 	}
 	
 	public void drawEnemy(int x, int y){
-		gFrame.drawEnemy(x, y);
+	    if (gFrame != null) 
+	    	gFrame.drawEnemy(x, y);
 	}
 	
 	public void moveEnemy(int x, int y, IEnemy enemy){
