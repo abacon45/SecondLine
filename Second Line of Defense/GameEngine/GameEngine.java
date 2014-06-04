@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import java.util.LinkedList;
 
 import Map.Map;
+import Player.Player;
 import Units.Towers.*;
 import Units.Enemy.*;
 
@@ -22,7 +23,7 @@ public class GameEngine {
 	public static GameEngine g;
 	
 	private GameEngine(){
-		
+		me = new Player();
 	}
 	
 	public static GameEngine getInstance() {
@@ -80,10 +81,15 @@ public class GameEngine {
 	
 	public void towerSelected(int tower) {
 		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
-		if (gFrame != null) {
-			gFrame.setTowerForLocation(b, activeLocation);
+		if (me.spendDNA(50)) {
+			if (gFrame != null) {
+				gFrame.setTowerForLocation(b, activeLocation);
+				gFrame.setPanelVisible(false);
+			}
+		} else {
 			gFrame.setPanelVisible(false);
 		}
+		
 	}
 	
 	public void cancelSelected() {

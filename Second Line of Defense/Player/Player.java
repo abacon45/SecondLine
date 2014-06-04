@@ -26,7 +26,7 @@ public class Player {
   
   public boolean spendDNA(int DNA) {
 	
-	  if (DNA < this.DNA) {
+	  if (DNA <= this.DNA) {
 		  this.DNA -= DNA;
 		  return true;
 	  }
