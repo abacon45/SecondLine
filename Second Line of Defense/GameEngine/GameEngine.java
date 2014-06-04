@@ -117,7 +117,6 @@ public class GameEngine {
 		i1.setLocation(17, 35);
 		defense.add(i1);
 
-		
 		gFrame.CytotoxicTCellCell(defense);
 		
 
@@ -142,6 +141,7 @@ public class GameEngine {
 			System.out.println("game over");
 		}
 		eSpawner = null;
+		gFrame.clearDefense();
 	}
 	
 	public void drawEnemy(int x, int y){

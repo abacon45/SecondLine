@@ -240,8 +240,11 @@ public class GameFrame extends JFrame {
 		contentPane.validate();
 		contentPane.repaint();
 		contentPane.paintImmediately(contentPane.getBounds());
-		contentPane.remove(dLabel);
-		enemyCount--;	
+		contentPane.remove(dLabel);	
+	}
+	
+	public void clearDefense() {
+		defense = new LinkedList<JLabel>();
 	}
 	
 	public void CytotoxicTCellCell(LinkedList<CytotoxicTCell> tCells){
@@ -249,11 +252,11 @@ public class GameFrame extends JFrame {
 		for(int i = 0; i < tCells.size(); i++) {
 			JLabel dLabel = new JLabel();
 			ImageIcon temp = new ImageIcon("Images/happy-white-blood-cell.jpg");
-			Image image = temp.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+			Image image = temp.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
 			temp.setImage(image);
 			dLabel.setIcon(temp);
 			dLabel.setVisible(true);
-			dLabel.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 40, 40);
+			dLabel.setBounds((tCells.get(count).getLocationX()) * 10, (tCells.get(count).getLocationY()) *12, 20, 20);
 			defense.add(dLabel);
 			contentPane.add(dLabel, new Integer (10));
 			count++;
