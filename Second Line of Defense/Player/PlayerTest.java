@@ -1,3 +1,4 @@
+package Player;
 import junit.framework.TestCase;
 import Units.Enemy.*;
 
