@@ -18,7 +18,20 @@ public class GameEngine {
 	static Map m = new Map(40,60);
 	static int heartHealth;
 	
-	public static void main(String[] args) {
+	public static GameEngine g;
+	
+	private GameEngine(){
+		
+	}
+	
+	public static GameEngine getInstance() {
+		if (g == null) {
+			g = new GameEngine();
+		}
+		return g;
+	}
+	
+	public void startMenu() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -31,7 +44,7 @@ public class GameEngine {
 		});
 	}
 	
-	public static void startMenuButtonPressed(int button) {
+	public void startMenuButtonPressed(int button) {
 		switch (button) {
 			case 0:
 				frame.dispose();
@@ -53,26 +66,26 @@ public class GameEngine {
 		}
 	}
 	
-	public static void startWaves() {
+	public void startWaves() {
 		startWave();
 	}
 	
-	public static void locationSelected(int location) {
+	public void locationSelected(int location) {
 		gFrame.setPanelVisible(true);
 		activeLocation = location;
 	}
 	
-	public static void towerSelected(int tower) {
+	public void towerSelected(int tower) {
 		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
 		gFrame.setTowerForLocation(b, activeLocation);
 		gFrame.setPanelVisible(false);
 	}
 	
-	public static void cancelSelected() {
+	public void cancelSelected() {
 		gFrame.setPanelVisible(false);
 	}
 	
-	public static void startWave() {
+	public void startWave() {
 		eSpawner = new EnemySpawner();
 		eSpawner.waveCreation();
 		heartHealth = eSpawner.enemiesTotal() / 3;
@@ -118,29 +131,29 @@ public class GameEngine {
 		eSpawner = null;
 	}
 	
-	public static void drawEnemy(int x, int y){
+	public void drawEnemy(int x, int y){
 		gFrame.drawEnemy(x, y);
 	}
 	
-	public static void moveEnemy(int x, int y, IEnemy enemy){
+	public void moveEnemy(int x, int y, IEnemy enemy){
 		m.removeUnit(enemy.getLocationX(), enemy.getLocationY());
 		m.placeUnit(x, y, enemy);
 		gFrame.moveEnemy(x, y, enemy.ID());
 	}
 	
-	public static void enemyDied(int id) {
+	public void enemyDied(int id) {
 		eSpawner.enemyDeath(eSpawner.getEnemy(id));
 		gFrame.removeEnemyLabel(id);
 	}
 	
-	public static void cellDied(int id) {
+	public void cellDied(int id) {
 		gFrame.removeCellLabel(id);
 	}
 	
-	public static void reachedHeart() {
+	public void reachedHeart() {
 		heartHealth--;
 	}
-	public static void startCombat(IEnemy enemy, CytotoxicTCell cell){
+	public void startCombat(IEnemy enemy, CytotoxicTCell cell){
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;

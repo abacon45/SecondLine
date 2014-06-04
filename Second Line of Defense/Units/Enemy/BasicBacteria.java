@@ -9,10 +9,12 @@ public class BasicBacteria implements IEnemy {
   private int yLocation;
   private int baseDamage = 10;
   private int health = 100;
+  GameEngine g;
   
   public BasicBacteria(int id) {
     alive = true;
     this.id = id;
+    g = GameEngine.getInstance();
   }
   public boolean isAlive(){
     return alive;
@@ -33,13 +35,13 @@ public class BasicBacteria implements IEnemy {
    xLocation = gridX;
    yLocation = gridY;
    if (yLocation >= 55) {
-	   GameEngine.reachedHeart();
+	   g.reachedHeart();
 	   died();  
    }
   }
   
   private void died() {
-	  GameEngine.enemyDied(id);
+	  g.enemyDied(id);
   }
   
   public int getLocationX()

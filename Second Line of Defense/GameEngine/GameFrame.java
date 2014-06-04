@@ -27,6 +27,7 @@ public class GameFrame extends JFrame {
 	JLabel[] enemies = new JLabel[10];
 	LinkedList<JLabel> defense = new LinkedList<JLabel>();
 	int enemyCount = 0;
+	GameEngine g;
 
 	private JLayeredPane contentPane;
 	private JPanel panel;
@@ -48,6 +49,7 @@ public class GameFrame extends JFrame {
 		ImageIcon map = new ImageIcon("Images/GameMap.png");
 		Image i = map.getImage().getScaledInstance(480, 778, Image.SCALE_SMOOTH);
 		map.setImage(i);
+		g = GameEngine.getInstance();
 		
 		locationImage = new ImageIcon("Images/imgres.jpg");
 		Image image = locationImage.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
@@ -63,7 +65,7 @@ public class GameFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnNewButton) {
-					GameEngine.towerSelected(0);
+					g.towerSelected(0);
 				}
 			}
 		});
@@ -75,7 +77,7 @@ public class GameFrame extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == button) {
-					GameEngine.towerSelected(0);
+					g.towerSelected(0);
 				}
 			}
 		});
@@ -86,7 +88,7 @@ public class GameFrame extends JFrame {
 		final JButton button_1 = new JButton("New button");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.towerSelected(0);
+				g.towerSelected(0);
 			}
 		});
 		button_1.setBounds(194, 6, 90, 89);
@@ -96,7 +98,7 @@ public class GameFrame extends JFrame {
 		final JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.cancelSelected();
+				g.cancelSelected();
 			}
 		});
 		cancelButton.setBounds(378, 6, 90, 89);
@@ -106,7 +108,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn1 = new JButton("");
 		towerBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(0);
+				g.locationSelected(0);
 			}
 		});
 		towerBtn1.setIcon(locationImage); 
@@ -117,7 +119,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn2 = new JButton("");
 		towerBtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(1);
+				g.locationSelected(1);
 			}
 		});
 		towerBtn2.setIcon(locationImage);
@@ -128,7 +130,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn3 = new JButton("");
 		towerBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(2);
+				g.locationSelected(2);
 			}
 		});
 		towerBtn3.setIcon(locationImage);
@@ -139,7 +141,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn4 = new JButton("");
 		towerBtn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(3);
+				g.locationSelected(3);
 			}
 		});
 		towerBtn4.setIcon(locationImage);
@@ -150,7 +152,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn5 = new JButton("");
 		towerBtn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(4);
+				g.locationSelected(4);
 			}
 		});
 		towerBtn5.setIcon(locationImage);
@@ -161,7 +163,7 @@ public class GameFrame extends JFrame {
 		JButton towerBtn6 = new JButton("");
 		towerBtn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.locationSelected(5);
+				g.locationSelected(5);
 			}
 		});
 		towerBtn6.setIcon(locationImage);
@@ -172,7 +174,7 @@ public class GameFrame extends JFrame {
 		JButton btnStartWave = new JButton("Start Wave");
 		btnStartWave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.startWaves();
+				g.startWaves();
 			}
 		});
 		btnStartWave.setBounds(357, 6, 117, 29);

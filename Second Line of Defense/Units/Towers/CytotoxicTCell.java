@@ -10,10 +10,12 @@ public class CytotoxicTCell implements IUnit {
   private int health = 100;
   private static int baseDamage = 15;
   private boolean alive;
+  private GameEngine g;
   
   public CytotoxicTCell(int id) {
     this.id = id;
     alive = true;
+    g = GameEngine.getInstance();
   }
   
   public int ID() {
@@ -63,7 +65,7 @@ public class CytotoxicTCell implements IUnit {
   }
   
   private void died() {
-	 GameEngine.cellDied(id);
+	g.cellDied(id);
   }
   
   public int checkHealth(){

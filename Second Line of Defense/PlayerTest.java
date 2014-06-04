@@ -20,6 +20,14 @@ public class PlayerTest extends TestCase {
     assertEquals(95, player1.health());
   }
   
-    
+  public void testGetDNA() {
+	  Player player1 = new Player();
+	  assertEquals(100, player1.getDNA());
+  }
   
+  public void testAddDNA() {
+	  Player player1 = new Player();
+	  player1.addDNA(50);
+	  assertEquals(150, player1.getDNA());
+  }
 }

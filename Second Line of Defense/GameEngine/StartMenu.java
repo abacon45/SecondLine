@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -20,6 +21,7 @@ import java.awt.Font;
 public class StartMenu extends JFrame {
 
 	private JPanel contentPane;
+	private GameEngine g;
 	
 
 	/**
@@ -33,6 +35,7 @@ public class StartMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setResizable(false);
+		g = GameEngine.getInstance();
 		
 		JLabel lblSecondLineOf = new JLabel("Second Line of Defense");
 		lblSecondLineOf.setFont(new Font("Helvetica Neue", Font.PLAIN, 26));
@@ -43,7 +46,7 @@ public class StartMenu extends JFrame {
 		final JButton btnNewButton = new JButton("Encyclopedia");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.startMenuButtonPressed(3);
+				g.startMenuButtonPressed(3);
 			}
 		});
 		btnNewButton.setBounds(184, 700, 117, 29);
@@ -53,7 +56,7 @@ public class StartMenu extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnNewButton_1) {
-					GameEngine.startMenuButtonPressed(2);
+					g.startMenuButtonPressed(2);
 				}
 			}
 		});
@@ -64,7 +67,7 @@ public class StartMenu extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnNewButton_2) {
-					GameEngine.startMenuButtonPressed(1);
+					g.startMenuButtonPressed(1);
 				}
 			}
 		});
@@ -74,7 +77,7 @@ public class StartMenu extends JFrame {
 		final JButton btnNewButton_3 = new JButton("Start");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GameEngine.startMenuButtonPressed(0);
+				g.startMenuButtonPressed(0);
 			}
 		});
 		btnNewButton_3.setBounds(184, 577, 117, 29);

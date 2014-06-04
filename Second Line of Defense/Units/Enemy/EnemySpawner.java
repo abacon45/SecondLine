@@ -23,15 +23,17 @@ public class EnemySpawner {
   Integer i;
   HashMap<Integer, IEnemy> enemies = new HashMap<Integer, IEnemy>();
   LinkedList<IEnemy> aliveEnemies = new LinkedList<IEnemy>();
+  GameEngine g;
   
   public EnemySpawner() {
     enemiesSpawned = 0;
+    g = GameEngine.getInstance();
   } 
 
   public void moveEnemies() {
 	  for (int i = 0; i < aliveEnemies.size(); i++) {
 		  IEnemy enemy = aliveEnemies.get(i);
-		  GameEngine.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
+		  g.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
 		if(enemy.ID() == enemiesSpawned() - 1){
 			break;
 		}
@@ -63,7 +65,7 @@ public class EnemySpawner {
     enemiesSpawned ++;
     int startLocation = 17;
     enemy.setLocation(startLocation, 0);
-    GameEngine.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
+    g.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
     aliveEnemies.add(enemy);
   }
   
@@ -112,7 +114,7 @@ public class EnemySpawner {
 		  for (int i = 0; i < aliveEnemies.size(); i++) {
 			  IEnemy enemy = aliveEnemies.get(i);
 			  if (cell.isAdjacent(enemy)){
-			    GameEngine.startCombat(enemy, cell);
+			    g.startCombat(enemy, cell);
 			  }
 		  }
 	  }
