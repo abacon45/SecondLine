@@ -10,4 +10,5 @@ public interface IEnemy extends IUnit {
   public boolean isAlive();
 public void takeDamage(int dealDamage);
 public int dealDamage();
+public void setSlowed(boolean boolState);
 }

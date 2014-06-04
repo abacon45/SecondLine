@@ -11,6 +11,7 @@ public class Tower implements IUnit {
  private int id;
  private Image towerImage; //For changing tower image on button for different towers; to do
  private int range;
+ protected int baseDamage = 30;
  
  //Constructors
  public Tower(int id){
@@ -38,5 +39,17 @@ public class Tower implements IUnit {
      }     
    }
    return isInRange;
+ }
+ 
+ public int dealDamage() {
+   return baseDamage;
+ }
+ 
+ public int getLocationX() {
+   return xCoordinate;
+ }
+ 
+ public int getLocationY() {
+   return yCoordinate;
  }
 }

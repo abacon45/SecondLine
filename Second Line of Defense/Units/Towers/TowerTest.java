@@ -1,5 +1,6 @@
 package Units.Towers;
 import Units.Enemy.*;
+import GameEngine.*;
 import junit.framework.TestCase;
 
 public class TowerTest extends TestCase {
@@ -20,20 +21,18 @@ public class TowerTest extends TestCase {
    }
    
  }
-
- protected void tearDown() throws Exception {
-  super.tearDown();
- }
  
  public void testTowerExists() {
    assertEquals(100, aTower.ID());
  }
  
  public void testTowerAtLocation() {
-   
+   assertEquals(254, aTower.getLocationX());
+   assertEquals(115, aTower.getLocationY());
  }
  
- public void testEnemyInRange(){ //To do
+ public void testEnemyInRange() {
+   GameEngine g = GameEngine.getInstance();
    BasicBacteria bacteria = new BasicBacteria(123);
    bacteria.setLocation(50, 51);
    assertFalse(aTower.inRange(bacteria));
@@ -55,4 +54,15 @@ public class TowerTest extends TestCase {
    }  
    
  }
+ 
+ public void testTowerDealsDamage() {
+   BasicBacteria b = new BasicBacteria(20);
+   b.takeDamage(aTower.dealDamage());
+   assertEquals(70, b.checkHealth());
+ }
+ 
+ protected void tearDown() throws Exception {
+    super.tearDown();
+ }
+
 }
