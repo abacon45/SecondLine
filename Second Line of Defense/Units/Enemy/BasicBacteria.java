@@ -33,6 +33,7 @@ public class BasicBacteria implements IEnemy {
    xLocation = gridX;
    yLocation = gridY;
    if (yLocation >= 55) {
+	   GameEngine.reachedHeart();
 	   died();  
    }
   }

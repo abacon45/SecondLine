@@ -73,9 +73,10 @@ public class GameEngine {
 	}
 	
 	public static void startWave() {
-		heartHealth = 1;
 		eSpawner = new EnemySpawner();
 		eSpawner.waveCreation();
+		heartHealth = eSpawner.enemiesTotal() / 3;
+		System.out.println(heartHealth);
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;
@@ -90,9 +91,7 @@ public class GameEngine {
 		i1.setLocation(17, 35);
 		defense.add(i1);
 
-		CytotoxicTCell i2 = new CytotoxicTCell(2);
-		i2.setLocation(17, 40);
-		defense.add(i2);
+		
 		gFrame.CytotoxicTCellCell(defense);
 		
 

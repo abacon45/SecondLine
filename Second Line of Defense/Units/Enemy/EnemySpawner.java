@@ -47,6 +47,10 @@ public class EnemySpawner {
     }
   } 
   
+  public int enemiesTotal() {
+	return enemiesTotal;
+  }
+  
   public int enemiesSpawned() {
     return enemiesSpawned;
   }

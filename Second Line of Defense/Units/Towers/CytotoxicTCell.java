@@ -57,12 +57,8 @@ public class CytotoxicTCell implements IUnit {
     health -= damage;
     System.out.println("Cell: " + health);
     if (this.health <= 0){
-<<<<<<< HEAD
-     alive = false;
-    	died();
-=======
-     alive = false;
->>>>>>> branch 'master' of https://github.com/abacon45/SecondLine.git
+      alive = false;
+      died();
     }
   }
   
