@@ -71,18 +71,23 @@ public class GameEngine {
 	}
 	
 	public void locationSelected(int location) {
-		gFrame.setPanelVisible(true);
-		activeLocation = location;
+		if (gFrame != null) {
+			gFrame.setPanelVisible(true);
+			activeLocation = location;
+		}
 	}
 	
 	public void towerSelected(int tower) {
 		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
-		gFrame.setTowerForLocation(b, activeLocation);
-		gFrame.setPanelVisible(false);
+		if (gFrame != null) {
+			gFrame.setTowerForLocation(b, activeLocation);
+			gFrame.setPanelVisible(false);
+		}
 	}
 	
 	public void cancelSelected() {
-		gFrame.setPanelVisible(false);
+		if (gFrame != null)
+			gFrame.setPanelVisible(false);
 	}
 	
 	public void startWave() {
@@ -139,16 +144,20 @@ public class GameEngine {
 	public void moveEnemy(int x, int y, IEnemy enemy){
 		m.removeUnit(enemy.getLocationX(), enemy.getLocationY());
 		m.placeUnit(x, y, enemy);
-		gFrame.moveEnemy(x, y, enemy.ID());
+		if (gFrame != null)
+			gFrame.moveEnemy(x, y, enemy.ID());
 	}
 	
 	public void enemyDied(int id) {
-		eSpawner.enemyDeath(eSpawner.getEnemy(id));
-		gFrame.removeEnemyLabel(id);
+		if (eSpawner != null)
+			eSpawner.enemyDeath(eSpawner.getEnemy(id));
+		if (gFrame != null)
+			gFrame.removeEnemyLabel(id);
 	}
 	
 	public void cellDied(int id) {
-		gFrame.removeCellLabel(id);
+		if (gFrame != null)
+			gFrame.removeCellLabel(id);
 	}
 	
 	public void reachedHeart() {
