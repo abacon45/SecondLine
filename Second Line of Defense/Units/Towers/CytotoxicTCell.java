@@ -8,7 +8,7 @@ public class CytotoxicTCell implements IUnit {
   private int xLocation;
   private int yLocation;
   private int health = 100;
-  private int baseDamage = 15;
+  private static int baseDamage = 15;
   private boolean alive;
   
   public CytotoxicTCell(int id) {
@@ -21,7 +21,7 @@ public class CytotoxicTCell implements IUnit {
   }
   
   public boolean isAlive(){
-	  return alive;
+   return alive;
   }
   
   public boolean equals(Object object) {
@@ -57,8 +57,12 @@ public class CytotoxicTCell implements IUnit {
     health -= damage;
     System.out.println("Cell: " + health);
     if (this.health <= 0){
-    	alive = false;
+<<<<<<< HEAD
+     alive = false;
     	died();
+=======
+     alive = false;
+>>>>>>> branch 'master' of https://github.com/abacon45/SecondLine.git
     }
   }
   
@@ -69,5 +73,4 @@ public class CytotoxicTCell implements IUnit {
   public int checkHealth(){
     return health;
   }
-  
 }
