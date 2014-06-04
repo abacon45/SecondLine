@@ -82,7 +82,6 @@ public class EnemySpawner {
 	aliveEnemies.remove(enemy);
     enemies.remove(enemy.ID());
     enemiesLeft --;
-    enemiesSpawned--;
   }
   
   public IEnemy getEnemy(int id){

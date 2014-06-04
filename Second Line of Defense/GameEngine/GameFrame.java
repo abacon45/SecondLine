@@ -28,6 +28,7 @@ public class GameFrame extends JFrame {
 	LinkedList<JLabel> defense = new LinkedList<JLabel>();
 	int enemyCount = 0;
 	GameEngine g;
+	JLabel dnaLabel;
 
 	private JLayeredPane contentPane;
 	private JPanel panel;
@@ -177,6 +178,10 @@ public class GameFrame extends JFrame {
 				g.startWaves();
 			}
 		});
+		
+		dnaLabel = new JLabel("DNA: 100");
+		dnaLabel.setBounds(0, 0, 61, 16);
+		contentPane.add(dnaLabel);
 		btnStartWave.setBounds(357, 6, 117, 29);
 		contentPane.add(btnStartWave);
 		
@@ -184,6 +189,10 @@ public class GameFrame extends JFrame {
 		lblNewLabel.setBounds(0, 0, 480, 778);
 		contentPane.add(lblNewLabel);
 		
+	}
+	
+	public void updateDNA(int d) {
+		dnaLabel.setText("DNA: " + d);
 	}
 	
 	public void setPanelVisible(boolean visible) {
@@ -231,8 +240,11 @@ public class GameFrame extends JFrame {
 		contentPane.validate();
 		contentPane.repaint();
 		contentPane.paintImmediately(contentPane.getBounds());
-		contentPane.remove(dLabel);
-		enemyCount--;	
+		contentPane.remove(dLabel);	
+	}
+	
+	public void clearDefense() {
+		defense = new LinkedList<JLabel>();
 	}
 	
 	public void CytotoxicTCellCell(LinkedList<CytotoxicTCell> tCells){
