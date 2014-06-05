@@ -82,4 +82,10 @@ public class CytotoxicTCellTest extends TestCase {
     assertFalse(tCell.isAlive());
   }
   
+  public void testCellDamageUpgrade() {
+    CytotoxicTCell tCell = new CytotoxicTCell(100);
+    tCell.upgradeDamage();
+    assertEquals(20, tCell.dealDamage());
+  }
+  
 }

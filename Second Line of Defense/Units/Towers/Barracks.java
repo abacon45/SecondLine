@@ -49,5 +49,12 @@ public class Barracks {
       } 
     }
   }
+  public void upgrade(){
+    for (int i = typeID; i < startingCellCount + typeID; i++){
+      if (units.containsKey(i)){
+        getCell(i).upgradeDamage();
+      } 
+    }
+  }
   
 }

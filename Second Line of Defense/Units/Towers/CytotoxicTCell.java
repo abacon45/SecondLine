@@ -8,14 +8,16 @@ public class CytotoxicTCell implements IUnit {
   private int xLocation;
   private int yLocation;
   private int health = 100;
-  private static int baseDamage = 15;
+  private int baseDamage = 15;
   private boolean alive;
   private GameEngine g;
+  private int damageUpgrade;
   
   public CytotoxicTCell(int id) {
     this.id = id;
     alive = true;
     g = GameEngine.getInstance();
+    damageUpgrade = 0;
   }
   
   public int ID() {
@@ -52,7 +54,7 @@ public class CytotoxicTCell implements IUnit {
   }
   
   public int dealDamage(){
-    return baseDamage;
+    return baseDamage + damageUpgrade;
   }
   
   public void takeDamage(int damage){
@@ -65,10 +67,13 @@ public class CytotoxicTCell implements IUnit {
   }
   
   private void died() {
-	g.cellDied(id);
+ g.cellDied(id);
   }
   
   public int checkHealth(){
     return health;
+  }
+  public void upgradeDamage(){
+    damageUpgrade += 5;
   }
 }

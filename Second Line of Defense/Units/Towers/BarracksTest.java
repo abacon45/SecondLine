@@ -30,4 +30,11 @@ public class BarracksTest extends TestCase {
     b.repopulate();
     assertEquals(3, b.cellsActive());
   }
+  public void testUpgradeBarracks(){
+    Barracks b = new Barracks();
+    b.upgrade();
+    assertEquals(20, b.getCell(100).dealDamage());
+    assertEquals(20, b.getCell(101).dealDamage());
+    assertEquals(20, b.getCell(102).dealDamage());
+  }
 }
