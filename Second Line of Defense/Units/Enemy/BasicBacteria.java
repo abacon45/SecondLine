@@ -1,5 +1,7 @@
 package Units.Enemy;
 
+import javax.swing.ImageIcon;
+
 import GameEngine.GameEngine;
 
 public class BasicBacteria implements IEnemy {
@@ -80,5 +82,10 @@ public class BasicBacteria implements IEnemy {
   public int checkHealth(){
     return health;
   }
+@Override
+public ImageIcon getIcon() {
+	// TODO Auto-generated method stub
+	return null;
+}
   
 }

@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import Units.IUnit;
 import Units.Towers.BasicTower;
 import Units.Towers.CytotoxicTCell;
 
@@ -62,7 +63,7 @@ public class GameFrame extends JFrame {
 		panel.setVisible(false);
 		panel.setLayout(null);
 		
-		final JButton btnNewButton = new JButton("New button");
+		final JButton btnNewButton = new JButton("Damage");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnNewButton) {
@@ -74,11 +75,11 @@ public class GameFrame extends JFrame {
 		panel.add(btnNewButton);
 		MenuButtons[0] = btnNewButton;
 		
-		final JButton button = new JButton("New button");
+		final JButton button = new JButton("Slow");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == button) {
-					g.towerSelected(0);
+					g.towerSelected(1);
 				}
 			}
 		});
@@ -86,15 +87,6 @@ public class GameFrame extends JFrame {
 		panel.add(button);
 		MenuButtons[1] = button;
 		
-		final JButton button_1 = new JButton("New button");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				g.towerSelected(0);
-			}
-		});
-		button_1.setBounds(194, 6, 90, 89);
-		panel.add(button_1);
-		MenuButtons[2] = button_1;
 		
 		final JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
@@ -200,13 +192,13 @@ public class GameFrame extends JFrame {
 	}
 	
 	
-	public void setTowerForLocation(BasicTower b, int activeLocation) {
-		TowerLocations[activeLocation].setIcon(b.getIcon());
+	public void setTowerForLocation(IUnit t, int activeLocation) {
+		TowerLocations[activeLocation].setIcon(t.getIcon());
 	}
 	
 	public void drawEnemy(int x, int y){
 		JLabel enemy = new JLabel();
-		enemy.setBounds(x * 20, y * 20, 20, 20);
+		enemy.setBounds(x * 10, y * 12, 20, 20);
 		enemy.setVisible(true);
 		enemy.setIcon(locationImage);
 		enemies[enemyCount] = enemy;

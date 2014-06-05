@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import Map.Map;
 import Player.Player;
+import Units.IUnit;
 import Units.Towers.*;
 import Units.Enemy.*;
 
@@ -12,6 +13,7 @@ public class GameEngine {
 	
 	static StartMenu frame;
 	static GameFrame gFrame;
+	static GameOverFrame gOFRAME;
 	static OptionsFrame oFrame;
 	static EncyclopediaFrame eFrame;
 	static EnemySpawner eSpawner;
@@ -19,8 +21,12 @@ public class GameEngine {
 	static Map m = new Map(40,60);
 	static int heartHealth;
 	private Player me;
+	LinkedList<Tower> towers = new LinkedList<Tower>();
 	
 	public static GameEngine g;
+	
+	private int[] towerLocationsX = {254,225,90,306,0,90};
+	private int[] towerLocationsY = {115,256,555,555,229,30};
 	
 	private GameEngine(){
 		me = new Player();
@@ -80,11 +86,21 @@ public class GameEngine {
 	}
 	
 	public void towerSelected(int tower) {
-		Units.Towers.BasicTower b = new Units.Towers.BasicTower();
+		Tower t = null;
+		if (tower == 0) {
+			t = new Tower(activeLocation);
+			t.setLocation(towerLocationsX[activeLocation], towerLocationsY[activeLocation]);
+		} else if (tower == 1) {
+			t = new BCellTower(activeLocation);
+			t.setLocation(towerLocationsX[activeLocation], towerLocationsY[activeLocation]);
+		} else if (tower == 2) {
+			
+		}
+		towers.add(t);
 		if (me.spendDNA(50)) {
 			gFrame.updateDNA(me.getDNA());
 			if (gFrame != null) {
-				gFrame.setTowerForLocation(b, activeLocation);
+				gFrame.setTowerForLocation(t, activeLocation);
 				gFrame.setPanelVisible(false);
 			}
 		} else {
@@ -102,7 +118,6 @@ public class GameEngine {
 		eSpawner = new EnemySpawner();
 		eSpawner.waveCreation();
 		heartHealth = eSpawner.enemiesTotal() / 3;
-		System.out.println(heartHealth);
 		long turnStart = System.nanoTime();
 		long turnEnd;
 		long turnDelta;
@@ -128,7 +143,7 @@ public class GameEngine {
 				counter = 0;
 			}
 			eSpawner.moveEnemies();
-            eSpawner.checkCombat(defense);
+            eSpawner.checkCombat(defense, towers);
 			do{
 				turnEnd = System.nanoTime();
 				turnDelta = turnEnd - turnStart;
@@ -138,6 +153,9 @@ public class GameEngine {
 			
 		}
 		if (heartHealth == 0) {
+			gFrame.dispose();
+			gOFRAME = new GameOverFrame();
+			gOFRAME.setVisible(true);
 			System.out.println("game over");
 		}
 		eSpawner = null;
@@ -187,5 +205,9 @@ public class GameEngine {
 				} while (turnDelta < 100000000);
 			  turnEnd = 0;
 		  }
-	  }
+	 }
+	
+	public void fire(IEnemy enemy, Tower t) {
+		enemy.takeDamage(t.dealDamage());
+	}
 }

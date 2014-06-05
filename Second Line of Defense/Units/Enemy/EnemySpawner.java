@@ -11,8 +11,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import Units.IUnit;
 import Units.Enemy.*;
 import Units.Towers.CytotoxicTCell;
+import Units.Towers.Tower;
 import GameEngine.GameEngine;
 
 public class EnemySpawner {
@@ -36,9 +38,9 @@ public class EnemySpawner {
    for (int i = 0; i < aliveEnemies.size(); i++) {
     IEnemy enemy = aliveEnemies.get(i);
     g.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
-  if(enemy.ID() == enemiesSpawned() - 1){
-   break;
-  }
+    if(enemy.ID() == enemiesSpawned() - 1){
+      break;
+    }
    }
   }
     
@@ -112,15 +114,23 @@ public class EnemySpawner {
     return enemies;
   }
   
-  public void checkCombat(LinkedList<CytotoxicTCell> defense){
-   for (CytotoxicTCell cell: defense){
-    for (int i = 0; i < aliveEnemies.size(); i++) {
-     IEnemy enemy = aliveEnemies.get(i);
-     if (cell.isAdjacent(enemy)){
-       g.startCombat(enemy, cell);
-     }
-    }
-   }
+  public void checkCombat(LinkedList<CytotoxicTCell> defense, LinkedList<Tower> towers){
+	  for (CytotoxicTCell cell: defense){
+		  for (int i = 0; i < aliveEnemies.size(); i++) {
+			  IEnemy enemy = aliveEnemies.get(i);
+			  if (cell.isAdjacent(enemy)){
+			    g.startCombat(enemy, cell);
+			  }
+		  }
+	  }
+	  for (Tower t : towers) {
+		  for (int i = 0; i < aliveEnemies.size(); i++) {
+			  IEnemy enemy = aliveEnemies.get(i);
+			  if (t.inRange(enemy)){
+			    g.fire(enemy, t);
+			  }
+		  }
+	  }
   }
   
 }
