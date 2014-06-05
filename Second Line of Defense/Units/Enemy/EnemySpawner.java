@@ -19,8 +19,8 @@ import GameEngine.GameEngine;
 
 public class EnemySpawner {
   int enemiesSpawned;
-  int enemiesLeft = 0;
-  int enemiesTotal = 0;
+  int enemiesLeft;
+  int enemiesTotal;
   boolean completedSpawn = false;;
   Integer i;
   HashMap<Integer, IEnemy> enemies = new HashMap<Integer, IEnemy>();
@@ -28,18 +28,20 @@ public class EnemySpawner {
   GameEngine g;
   
   public EnemySpawner() {
+    enemiesLeft = 0;
     enemiesSpawned = 0;
+    enemiesTotal = 0;
     g = GameEngine.getInstance();
   } 
 
   public void moveEnemies() {
-	  for (int i = 0; i < aliveEnemies.size(); i++) {
-		  IEnemy enemy = aliveEnemies.get(i);
-		  g.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
-		if(enemy.ID() == enemiesSpawned() - 1){
-			break;
-		}
-	  }
+   for (int i = 0; i < aliveEnemies.size(); i++) {
+    IEnemy enemy = aliveEnemies.get(i);
+    g.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
+  if(enemy.ID() == enemiesSpawned() - 1){
+   break;
+  }
+   }
   }
     
   public void spawn() {
@@ -52,7 +54,7 @@ public class EnemySpawner {
   } 
   
   public int enemiesTotal() {
-	return enemiesTotal;
+    return enemiesTotal;
   }
   
   public int enemiesSpawned() {
@@ -65,6 +67,7 @@ public class EnemySpawner {
     
   public void spawnEnemyOnMap(IEnemy enemy) {
     enemiesSpawned ++;
+    enemiesLeft ++;
     int startLocation = 17;
     enemy.setLocation(startLocation, 0);
     g.drawEnemy(enemy.getLocationX(), enemy.getLocationY());
@@ -81,7 +84,7 @@ public class EnemySpawner {
   }  
   
   public void enemyDeath(IEnemy enemy) {
-	aliveEnemies.remove(enemy);
+    aliveEnemies.remove(enemy);
     enemies.remove(enemy.ID());
     enemiesLeft --;
   }
@@ -111,6 +114,7 @@ public class EnemySpawner {
     return enemies;
   }
   
+<<<<<<< HEAD
   public void checkCombat(LinkedList<CytotoxicTCell> defense, LinkedList<Tower> towers){
 	  for (CytotoxicTCell cell: defense){
 		  for (int i = 0; i < aliveEnemies.size(); i++) {
@@ -128,6 +132,17 @@ public class EnemySpawner {
 			  }
 		  }
 	  }
+=======
+  public void checkCombat(LinkedList<CytotoxicTCell> defense){
+   for (CytotoxicTCell cell: defense){
+    for (int i = 0; i < aliveEnemies.size(); i++) {
+     IEnemy enemy = aliveEnemies.get(i);
+     if (cell.isAdjacent(enemy)){
+       g.startCombat(enemy, cell);
+     }
+    }
+   }
+>>>>>>> branch 'master' of https://github.com/abacon45/SecondLine.git
   }
   
 }

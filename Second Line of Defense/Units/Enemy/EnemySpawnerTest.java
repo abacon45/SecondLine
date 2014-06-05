@@ -31,11 +31,12 @@ public class EnemySpawnerTest extends TestCase {
   
   public void testEnemyKilled() {
     EnemySpawner spawner = new EnemySpawner();
-    IEnemy enemy = new BasicBacteria(0);
-    spawner.spawnEnemyOnMap(enemy);
-    spawner.spawnEnemyOnMap(enemy);
-    spawner.enemyDeath(enemy);
-    assertEquals (1, spawner.enemiesSpawned());
+    IEnemy enemy0 = new BasicBacteria(0);
+    IEnemy enemy1 = new BasicBacteria(1);
+    spawner.spawnEnemyOnMap(enemy0);
+    spawner.spawnEnemyOnMap(enemy1);
+    spawner.enemyDeath(enemy0);
+    assertEquals (1, spawner.enemiesLeft());
   }
   
   public void testMultipleEnemiesInCollection() {
