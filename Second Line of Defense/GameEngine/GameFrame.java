@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import Units.IUnit;
 import Units.Towers.BasicTower;
 import Units.Towers.CytotoxicTCell;
 
@@ -78,7 +79,7 @@ public class GameFrame extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == button) {
-					g.towerSelected(0);
+					g.towerSelected(1);
 				}
 			}
 		});
@@ -89,7 +90,7 @@ public class GameFrame extends JFrame {
 		final JButton button_1 = new JButton("New button");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				g.towerSelected(0);
+				g.towerSelected(2);
 			}
 		});
 		button_1.setBounds(194, 6, 90, 89);
@@ -200,13 +201,13 @@ public class GameFrame extends JFrame {
 	}
 	
 	
-	public void setTowerForLocation(BasicTower b, int activeLocation) {
-		TowerLocations[activeLocation].setIcon(b.getIcon());
+	public void setTowerForLocation(IUnit t, int activeLocation) {
+		TowerLocations[activeLocation].setIcon(t.getIcon());
 	}
 	
 	public void drawEnemy(int x, int y){
 		JLabel enemy = new JLabel();
-		enemy.setBounds(x * 20, y * 20, 20, 20);
+		enemy.setBounds(x * 10, y * 12, 20, 20);
 		enemy.setVisible(true);
 		enemy.setIcon(locationImage);
 		enemies[enemyCount] = enemy;

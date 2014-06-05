@@ -1,7 +1,7 @@
 package Units.Enemy;
 import Units.IUnit;
 
-public interface IEnemy extends IUnit {
+public interface IEnemy extends IUnit{
   public int ID();
   public boolean equals(Object object);
   public int getLocationX();

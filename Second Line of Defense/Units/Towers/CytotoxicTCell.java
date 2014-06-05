@@ -1,4 +1,6 @@
 package Units.Towers;
+import javax.swing.ImageIcon;
+
 import GameEngine.GameEngine;
 import Units.IUnit;
 import Units.Enemy.*;
@@ -71,4 +73,10 @@ public class CytotoxicTCell implements IUnit {
   public int checkHealth(){
     return health;
   }
+
+@Override
+public ImageIcon getIcon() {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
