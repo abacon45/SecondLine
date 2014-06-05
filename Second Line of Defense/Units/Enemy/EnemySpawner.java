@@ -38,9 +38,9 @@ public class EnemySpawner {
    for (int i = 0; i < aliveEnemies.size(); i++) {
     IEnemy enemy = aliveEnemies.get(i);
     g.moveEnemy(enemy.getLocationX(), enemy.getLocationY() + 1, enemy);
-  if(enemy.ID() == enemiesSpawned() - 1){
-   break;
-  }
+    if(enemy.ID() == enemiesSpawned() - 1){
+      break;
+    }
    }
   }
     
@@ -114,7 +114,6 @@ public class EnemySpawner {
     return enemies;
   }
   
-<<<<<<< HEAD
   public void checkCombat(LinkedList<CytotoxicTCell> defense, LinkedList<Tower> towers){
 	  for (CytotoxicTCell cell: defense){
 		  for (int i = 0; i < aliveEnemies.size(); i++) {
@@ -132,17 +131,6 @@ public class EnemySpawner {
 			  }
 		  }
 	  }
-=======
-  public void checkCombat(LinkedList<CytotoxicTCell> defense){
-   for (CytotoxicTCell cell: defense){
-    for (int i = 0; i < aliveEnemies.size(); i++) {
-     IEnemy enemy = aliveEnemies.get(i);
-     if (cell.isAdjacent(enemy)){
-       g.startCombat(enemy, cell);
-     }
-    }
-   }
->>>>>>> branch 'master' of https://github.com/abacon45/SecondLine.git
   }
   
 }

@@ -13,6 +13,7 @@ public class GameEngine {
 	
 	static StartMenu frame;
 	static GameFrame gFrame;
+	static GameOverFrame gOFRAME;
 	static OptionsFrame oFrame;
 	static EncyclopediaFrame eFrame;
 	static EnemySpawner eSpawner;
@@ -152,6 +153,9 @@ public class GameEngine {
 			
 		}
 		if (heartHealth == 0) {
+			gFrame.dispose();
+			gOFRAME = new GameOverFrame();
+			gOFRAME.setVisible(true);
 			System.out.println("game over");
 		}
 		eSpawner = null;
